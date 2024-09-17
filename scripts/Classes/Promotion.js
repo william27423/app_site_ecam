@@ -19,7 +19,7 @@ export class Promotion{
     // Méthode pour afficher les noms des UE de la promotion
     afficher_UE() {
         this.UE.forEach(ue => {
-            console.log(`UE: ${ue.nom}, Coeff TP: ${ue.credits}`);
+            console.log(`UE: ${ue.nom}`);
         });
     }
 }
