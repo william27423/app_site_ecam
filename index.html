@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcul de la moyenne</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script> <!-- Lien vers le fichier JavaScript -->
 </head>
 <body>
 
     <h1>Calcul de la moyenne de deux nombres (0 à 20)</h1>
 
-    <div class="container">
+    <!-- Menu déroulant -->
+    <div class="dropdown">
+        <button class="dropdown-button">Sélectionnez une option <span class="arrow">▼</span></button>
+        <div class="dropdown-content">
+            <button id="boutonAM3">AM3</button>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+            <a href="#">Option 4</a>
+        </div>
+    </div>
+    
+    <!-- Champs de saisie pour les nombres et les coefficients -->
+    <div class="container" id="container">
         <div class="note_coef">
             <input type="number" id="nombre1" placeholder="Entrez le premier nombre" min="0" max="20" step="0.5">
             <input type="number" id="coef1" class="coef" placeholder="coef" min="0" max="10" value="1">
@@ -21,10 +32,16 @@
             <input type="number" id="nombre2" placeholder="Entrez le deuxième nombre" min="0" max="20" step="0.5">
             <input type="number" id="coef2" class="coef" placeholder="coef" min="0" max="10" value="1">
         </div>
-    </div> 
-    <button onclick="calculerMoyenne()">Calculer la moyenne</button>
-    
-    <p id="resultat"></p> <!-- Zone où la moyenne sera affichée --> 
+    </div>
 
+    <!-- Affichage du résultat -->
+    <p id="resultat"></p> 
+    <!-- Bouton pour calculer la moyenne -->
+    <button id="boutonCalcul">Calculer Moyenne</button>
+    
+    
+
+    <script src="scripts/global.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
