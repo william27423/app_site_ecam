@@ -36,13 +36,13 @@ export class Calculs {
     }
     setNotes (liste){
         // Pour chaque matière dans la liste
-        liste.forEach((note, index) => {
-            this.creerNoteCoef(index +3, index +3)
+        liste.forEach((note_index, index) => {
+            this.creerNoteCoef(index, note_index.coef)
             
         });
     }
 
-    creerNoteCoef(idNombre, idCoef) {
+    creerNoteCoef(id, coef) {
         // Création du conteneur <div>
         const divNoteCoef = document.createElement('div');
         divNoteCoef.className = 'note_coef';
@@ -50,7 +50,7 @@ export class Calculs {
         // Création du champ de saisie pour le nombre
         const inputNombre = document.createElement('input');
         inputNombre.type = 'number';
-        inputNombre.id = `nombre${idNombre}`;
+        inputNombre.id = `nombre${id}`;
         inputNombre.className = 'note';
         inputNombre.placeholder = 'Entrez le nombre';
         inputNombre.min = '0';
@@ -60,12 +60,12 @@ export class Calculs {
         // Création du champ de saisie pour le coefficient
         const inputCoef = document.createElement('input');
         inputCoef.type = 'number';
-        inputCoef.id = `coef${idCoef}`;
+        inputCoef.id = `coef${id}`;
         inputCoef.className = 'coef';
         inputCoef.placeholder = 'coef';
         inputCoef.min = '0';
         inputCoef.max = '10';
-        inputCoef.value = '1';
+        inputCoef.value = coef;
 
         // Ajouter les champs de saisie au conteneur
         divNoteCoef.appendChild(inputNombre);
