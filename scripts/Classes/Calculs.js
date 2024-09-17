@@ -4,25 +4,31 @@ export class Calculs {
 
     }
     calculerMoyenne() {
-        let nombre1 = parseFloat(document.getElementById("nombre1").value);
-        let coef1 = parseInt(document.getElementById("coef1").value);
-        let nombre2 = parseFloat(document.getElementById("nombre2").value);
-        let coef2 = parseInt(document.getElementById("coef2").value);
-        let nombre3 = parseFloat(document.getElementById("nombre3").value);
-        let coef3 = parseInt(document.getElementById("coef3").value);
-        let nombre4 = parseFloat(document.getElementById("nombre4").value);
-        let coef4 = parseInt(document.getElementById("coef4").value);
-
-        if (isNaN(nombre1) || isNaN(nombre2) || nombre1 < 0 || nombre1 > 20 || nombre2 < 0 || nombre2 > 20) {
-            alert("Veuillez entrer deux nombres valides entre 0 et 20.");
-            return;
+        let notes = document.querySelectorAll(".note");
+        let coefs = document.querySelectorAll(".coef");
+    
+        let sommeNotes = 0;
+        let sommeCoefficients = 0;
+        
+        for (let i = 0; i < notes.length; i++) {
+            let note = parseFloat(notes[i].value);
+            let coef = parseInt(coefs[i].value);
+            
+            // Vérifie que les valeurs sont valides
+            if (isNaN(note) || isNaN(coef) || note < 0 || note > 20) {
+                alert("Veuillez entrer des valeurs valides pour toutes les notes (entre 0 et 20) et coefficients.");
+                return;
+            }
+            
+            sommeNotes += note * coef;
+            sommeCoefficients += coef;
         }
-
-        let sommeNotes = nombre1 * coef1 + nombre2 * coef2;
-        let sommeCoefficients = coef1 + coef2;
+        
+        // Calcul de la moyenne pondérée
         let moyenne = sommeNotes / sommeCoefficients;
-
-        document.getElementById("resultat").textContent = "La moyenne est : " + moyenne.toFixed(2);
+        
+        // Affiche le résultat
+        document.getElementById("resultat").textContent = "Moyenne: " + moyenne.toFixed(2);
     }
     setNotes (liste){
         // Pour chaque matière dans la liste
@@ -41,6 +47,7 @@ export class Calculs {
         const inputNombre = document.createElement('input');
         inputNombre.type = 'number';
         inputNombre.id = `nombre${idNombre}`;
+        inputNombre.className = 'note';
         inputNombre.placeholder = 'Entrez le nombre';
         inputNombre.min = '0';
         inputNombre.max = '20';
