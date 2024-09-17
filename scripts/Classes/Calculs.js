@@ -14,14 +14,18 @@ export class Calculs {
             let note = parseFloat(notes[i].value);
             let coef = parseInt(coefs[i].value);
             
-            // Vérifie que les valeurs sont valides
-            if (isNaN(note) || isNaN(coef) || note < 0 || note > 20) {
+            if (note < 0 || note > 20){
                 alert("Veuillez entrer des valeurs valides pour toutes les notes (entre 0 et 20) et coefficients.");
                 return;
             }
-            
+            // Vérifie que les valeurs sont valides
+            else if (isNaN(note) || isNaN(coef)) {
+                
+            }
+            else {
             sommeNotes += note * coef;
             sommeCoefficients += coef;
+            }
         }
         
         // Calcul de la moyenne pondérée
