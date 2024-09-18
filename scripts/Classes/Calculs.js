@@ -42,38 +42,74 @@ export class Calculs {
         });
     }
 
-    creerNoteCoef(id, coef) {
-        // Création du conteneur <div>
-        const divNoteCoef = document.createElement('div');
-        divNoteCoef.className = 'note_coef';
-
-        // Création du champ de saisie pour le nombre
-        const inputNombre = document.createElement('input');
-        inputNombre.type = 'number';
-        inputNombre.id = `nombre${id}`;
-        inputNombre.className = 'note';
-        inputNombre.placeholder = 'Entrez le nombre';
-        inputNombre.min = '0';
-        inputNombre.max = '20';
-        inputNombre.step = '0.5';
-
-        // Création du champ de saisie pour le coefficient
-        const inputCoef = document.createElement('input');
-        inputCoef.type = 'number';
-        inputCoef.id = `coef${id}`;
-        inputCoef.className = 'coef';
-        inputCoef.placeholder = 'coef';
-        inputCoef.min = '0';
-        inputCoef.max = '10';
-        inputCoef.value = coef;
-
-        // Ajouter les champs de saisie au conteneur
-        divNoteCoef.appendChild(inputNombre);
-        divNoteCoef.appendChild(inputCoef);
-
-        // Ajouter le conteneur à la page (ici on l'ajoute à un conteneur avec l'id 'container')
+    setMatieres(liste_matiere){    
         const container = document.getElementById('container');
-        container.appendChild(divNoteCoef);
+        container.innerHTML = '';
+
+        const UE = document.createElement('div');
+        UE.className = 'UE';
+        UE.id = 'UE'; // Ajouter l'ID ici
+
+        const nom_UE = document.createElement('span');
+        nom_UE.className = 'nom_UE';
+        nom_UE.textContent = 'ouiiii';
+
+        container.appendChild(UE);
+
+        liste_matiere.forEach((matiere_index, index) => {
+            this.setTypes(matiere_index, index);
+        });
     }
-        
+
+    setTypes(matiere_0, id) {
+        const UE = document.getElementById('UE');
+
+        const matiere = document.createElement('div');
+        matiere.className = 'matiere';
+        matiere.id = `matiere${id}`; // Ajouter l'ID ici
+
+        const nom_matiere = document.createElement('span');
+        nom_matiere.className = 'nom_matiere';
+        nom_matiere.textContent = matiere_0.nom;
+
+        matiere.appendChild(nom_matiere);
+        UE.appendChild(matiere);
+        let liste_types_evaluation = matiere_0.liste_types_evaluation
+        console.log(liste_types_evaluation);
+
+        liste_types_evaluation.forEach((type_evaluation_index, index) => {
+            this.creerNoteCoef(index, matiere.id ,type_evaluation_index);
+        });
+    }
+    
+    creerNoteCoef(id, matiere_id, type_evaluation) {
+        for (let i = 0; i < type_evaluation.nombre_de_notes ; i++) {
+            const divNoteCoef = document.createElement('div');
+            divNoteCoef.className = 'note_coef';
+
+            const inputNombre = document.createElement('input');
+            inputNombre.type = 'number';
+            inputNombre.id = `nombre${id}`;
+            inputNombre.className = 'note';
+            inputNombre.placeholder = 'Entrez le nombre';
+            inputNombre.min = 0;
+            inputNombre.max = 20;
+            inputNombre.step = 0.5;
+
+            const inputCoef = document.createElement('input');
+            inputCoef.type = 'number';
+            inputCoef.id = `coef${id}`;
+            inputCoef.className = 'coef';
+            inputCoef.placeholder = 'coef';
+            inputCoef.min = 0;  
+            inputCoef.max = 10;
+            inputCoef.value = type_evaluation.coef;
+
+            divNoteCoef.appendChild(inputNombre);
+            divNoteCoef.appendChild(inputCoef);
+
+            const matiere = document.getElementById(matiere_id);
+            matiere.appendChild(divNoteCoef);
+        }
+    } 
 }

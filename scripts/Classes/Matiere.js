@@ -1,13 +1,8 @@
 // Classe Matiere
 export class Matiere {
-    constructor(nom, coeffDS = 1, coeffTP = 1, coeffProjet = 1) {
+    constructor(nom, liste_types_evaluation) {
         this.nom = nom;
-        this.coeffDS = coeffDS;
-        this.coeffTP = coeffTP;
-        this.coeffProjet = coeffProjet;
-        this.noteDS = 0;
-        this.noteTP = 0;
-        this.noteProjet = 0;
+        this.liste_types_evaluation = liste_types_evaluation;
     }
 
     // Modifier les coefficients

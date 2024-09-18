@@ -23,6 +23,22 @@ h1 {
     justify-content: center;
     width: 100%; /* S'adapte à la largeur du conteneur */
 }
+.matiere {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* S'adapte à la largeur du conteneu*/
+}
+
+.nom_matiere {
+    font-style: italic;
+    text-decoration: underline;   /* Souligner le texte */
+    background-color: rgb(123, 203, 123);      /* Surligner en vert */
+    color: white;                 /* Changer la couleur du texte en blanc pour le contraste */
+    padding: 2px;
+    margin-bottom: 5px;
+}
 
 .note_coef {
     display: flex;

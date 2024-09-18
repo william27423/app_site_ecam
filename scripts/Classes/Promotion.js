@@ -1,7 +1,7 @@
 export class Promotion{
-    constructor (nom, UE){
+    constructor (nom, liste_UE){
         this.nom = nom;
-        this.UE = UE;
+        this.liste_UE = liste_UE;
     }
     set_UE(ue) {
         if (ue instanceof UE) {
