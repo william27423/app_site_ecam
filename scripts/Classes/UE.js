@@ -2,7 +2,7 @@
 export class UE {
     constructor(nom, liste_matieres, credits) {
         this.nom = nom;
-        this.liste_matiere = liste_matieres;  // Initialise un tableau pour stocker les matières
+        this.liste_matieres = liste_matieres;  // Initialise un tableau pour stocker les matières
         this.credits = credits;
     }
 
