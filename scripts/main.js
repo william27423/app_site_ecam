@@ -11,8 +11,8 @@ console.log('aaaaaaaa');
 const boutonCalcul = document.getElementById("boutonCalcul");
 boutonCalcul.addEventListener('click', app.calculerMoyenne);
 
-let AM3 = new Promotion('AM3', [new UE('Matériaux', [new Matiere('pratique du calcul des structures', [new TypeEvaluation('DS', 1, 2.0), new TypeEvaluation('TP', 1, 1.0)]), new Matiere('Matériaux', [new TypeEvaluation('DS1', 1, 1.0), new TypeEvaluation('DS2', 1, 2.0), new TypeEvaluation('TP', 1, 1.0)])]), new UE('Conception', [new Matiere('conception', [new TypeEvaluation('projet1', 1, 1.0), new TypeEvaluation('projet2', 1, 1.0)])])])
-let liste = [new UE('conception',[new Matiere('structure',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)]), new Matiere('matérieaux',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)])], 2), new UE('conception',[new Matiere('structure',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)]), new Matiere('matérieaux',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)])], 2)];
+let AM3 = new Promotion('AM3', [new UE('Matériaux', [new Matiere('pratique du calcul des structures', 0.4,[new TypeEvaluation('DS', 1, 2.0), new TypeEvaluation('TP', 1, 1.0)]), new Matiere('Matériaux', 0.6,[new TypeEvaluation('DS1', 2, 1.0), new TypeEvaluation('DS2', 1, 2.0), new TypeEvaluation('TP', 1, 1.0)])]), new UE('Conception mécaniques', [new Matiere('conception', 1.0, [new TypeEvaluation('projet1', 1, 1.0), new TypeEvaluation('projet2', 1, 1.0)])])])
+let liste = new Promotion('AM3',[new UE('conception',[new Matiere('structure',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)]), new Matiere('matérieaux',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)])], 2), new UE('conception',[new Matiere('structure',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)]), new Matiere('matérieaux',[new TypeEvaluation('TP', 2, 1),new TypeEvaluation('DS', 1, 2)])], 2)]);
 
 const boutonAM3 = document.getElementById("boutonAM3");
-boutonAM3.addEventListener('click', () => app.setUE(liste));
+boutonAM3.addEventListener('click', () => app.setUE(AM3));

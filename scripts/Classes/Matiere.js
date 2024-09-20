@@ -1,7 +1,8 @@
 // Classe Matiere
 export class Matiere {
-    constructor(nom, liste_types_evaluation) {
+    constructor(nom, poid_matiere ,liste_types_evaluation) {
         this.nom = nom;
+        this.poid_matiere = poid_matiere;
         this.liste_types_evaluation = liste_types_evaluation;
     }
 

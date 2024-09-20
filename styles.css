@@ -1,88 +1,95 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    height: 100vh;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrer tout le contenu horizontalement */
-     /* Centrer tout le contenu verticalement */
+    justify-content: center; /* Centrer tout le contenu verticalement */
+    min-height: 100vh;
 }
 
 h1 {
     color: #333;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     text-align: center;
+}
+.nom_UE {
+    font-size: 24px;   /* Taille du texte plus grande */
+    color: rgb(21, 126, 49);       /* Texte coloré en bleu */
+    font-weight: bold; /* Texte en gras */
+    margin-bottom: 10px; /* Espacement en dessous de l'UE */
+    text-align: center; /* Centrer le texte de l'UE */
 }
 
 .container {
-    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%; /* S'adapte à la largeur du conteneur */
+    width: 100%;
 }
-.matiere {
+
+.Promotion, .UE, .matiere {
+    width: 100%;
+    max-width: 400px; /* Limiter la largeur des sections */
+    margin-bottom: 20px;
+}
+
+.matiere-info {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* S'adapte à la largeur du conteneu*/
+    align-items: center; /* Alignement vertical centré */
+    margin-bottom: 10px;
 }
 
 .nom_matiere {
+    margin-left: 10px;
     font-style: italic;
-    text-decoration: underline;   /* Souligner le texte */
-    background-color: rgb(123, 203, 123);      /* Surligner en vert */
-    color: white;                 /* Changer la couleur du texte en blanc pour le contraste */
-    padding: 2px;
-    margin-bottom: 5px;
+    text-decoration: underline;
+    background-color: rgb(123, 203, 123);
+    color: white;
+    padding: 2px 5px;
+}
+
+.poid {
+    margin-left: 10px;
+    width: 60px; /* Taille du champ poid */
 }
 
 .note_coef {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 300px; /* Largeur maximale pour les champs */
-    margin-bottom: 15px; /* Ajoute un espacement entre les lignes de saisie */
+    margin-bottom: 10px;
 }
 
 input {
-    padding: 10px;
-    font-size: 16px;
+    padding: 8px;
+    font-size: 14px;
     border-radius: 5px;
-    border: 1px solid #ccc; /* Ajoute une bordure douce */
-    width: 100%; /* Remplit l'espace disponible */
-    margin-right: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
     box-sizing: border-box;
 }
 
 input.coef {
-    background-color: #e0f7fa; /* Fond bleu clair pour les coefficients */
-    border: 1px solid #00796b; /* Bordure bleue plus foncée */
-    color: #333; /* Texte bleu foncé */
-    font-weight: bold; /* Met le texte en gras pour différencier des notes */
-    border-radius: 15px; /* Ajoute une bordure arrondie de 15px */
-    padding: 10px; /* Ajuste le padding pour le confort visuel */
-    font-size: 12px;
-    width: 60px; /* Largeur spécifique aux coefficients */
-    margin-left: 10px; /* Ajoute un petit espace entre le champ de note et le coefficient */
+    width: 60px; /* Taille des coefficients */
+    margin-left: 10px;
+    background-color: #e0f7fa;
+    border: 1px solid #00796b;
+    font-weight: bold;
 }
 
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    width: 100%;
+    max-width: 300px;
     margin-top: 20px;
-    width: 100%; /* S'adapte à la largeur maximale définie pour le conteneur */
-    max-width: 300px; /* Largeur maximale du bouton */
 }
 
 button:hover {
@@ -93,19 +100,18 @@ p {
     font-size: 18px;
     color: #333;
     margin-top: 20px;
-    text-align: center; /* Centrer le texte du résultat */
+    text-align: center;
 }
-/* Style du conteneur déroulant */
+
+/* Style du menu déroulant */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Style du bouton de la boîte déroulante */
 .dropdown-button {
     background-color: #4CAF50;
     color: white;
-    margin-bottom: 10px; /* Ajuster si nécessaire */
     padding: 10px;
     font-size: 16px;
     border: none;
@@ -113,37 +119,27 @@ p {
     border-radius: 5px;
 }
 
-/* Flèche du bouton */
-.arrow {
-    font-size: 12px;
-    margin-left: 5px;
-}
-
-/* Contenu déroulant (caché par défaut) */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffffff; /* Assure un bon contraste */
+    background-color: white;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+    z-index: 1;
 }
 
-/* Liens dans le contenu déroulant */
 .dropdown-content a {
-    color: #000000; /* Texte noir pour un meilleur contraste */
-    padding: 12px 16px;
+    color: black;
+    padding: 12px;
     text-decoration: none;
     display: block;
 }
 
-/* Changement de couleur au survol */
 .dropdown-content a:hover {
     background-color: #f1f1f1;
 }
 
-/* Afficher le contenu lorsque .show est activé */
 .dropdown.show .dropdown-content {
     display: block;
 }

@@ -16,10 +16,5 @@ export class Promotion{
         return this.UE;  // Renvoie le tableau des UE
     }
 
-    // Méthode pour afficher les noms des UE de la promotion
-    afficher_UE() {
-        this.UE.forEach(ue => {
-            console.log(`UE: ${ue.nom}`);
-        });
-    }
+    
 }
