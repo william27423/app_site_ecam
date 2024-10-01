@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,31 +15,28 @@ h1 {
     margin-bottom: 20px;
     text-align: center;
 }
-.nom_UE {
-    font-size: 24px;   /* Taille du texte plus grande */
-    color: rgb(21, 126, 49);       /* Texte coloré en bleu */
-    font-weight: bold; /* Texte en gras */
-    margin-bottom: 10px; /* Espacement en dessous de l'UE */
-    text-align: center; /* Centrer le texte de l'UE */
-}
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 150%;
 }
 
+/* Promotion and UE Layout */
 .Promotion, .UE, .matiere {
-    width: 100%;
-    max-width: 400px; /* Limiter la largeur des sections */
-    margin-bottom: 20px;
+    width: 150%;
+    max-width: 550px; /* Limiter la largeur des sections */
+    margin-bottom: 2px;
 }
 
-.matiere-info {
+
+/* Matière Info */
+.matiere_info {
     display: flex;
+    justify-content: space-between; /* Séparer le nom de la matière et le pourcentage */
     align-items: center; /* Alignement vertical centré */
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .nom_matiere {
@@ -48,20 +46,27 @@ h1 {
     background-color: rgb(123, 203, 123);
     color: white;
     padding: 2px 5px;
+    flex: 1; /* Prend tout l'espace restant */
 }
 
 .poid {
+    font-size: 12px; 
     margin-left: 10px;
-    width: 60px; /* Taille du champ poid */
+    text-align: right; /* Alignement à droite */
+    width: 20%; /* Taille du champ pourcentage */
 }
 
+/* Layout for Note and Coefficient */
 .note_coef {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 60px; /* Deux colonnes : une pour la note, une pour le coefficient */
+    grid-gap: 10px; /* Espacement entre les colonnes */
+    align-items: center; /* Aligner verticalement les éléments */
     width: 100%;
     margin-bottom: 10px;
 }
 
+/* Input Fields */
 input {
     padding: 8px;
     font-size: 14px;
@@ -71,39 +76,21 @@ input {
     box-sizing: border-box;
 }
 
+input.note {
+    width: 100%; /* Prend toute la largeur disponible dans la grille */
+}
+
 input.coef {
-    width: 60px; /* Taille des coefficients */
-    margin-left: 10px;
+    width: 60px; /* Largeur fixe pour les coefficients */
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
     background-color: #e0f7fa;
     border: 1px solid #00796b;
     font-weight: bold;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    max-width: 300px;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-p {
-    font-size: 18px;
-    color: #333;
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Style du menu déroulant */
+/* Dropdown Menu Styles */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -142,4 +129,106 @@ p {
 
 .dropdown.show .dropdown-content {
     display: block;
+}
+
+/* Alignement du titre de l'UE et de la flèche */
+.nom_UE-container {
+    display: flex;
+    align-items: center; /* Centrer verticalement la flèche et le texte */
+    justify-content: flex-start;
+    /* Aligner la flèche et le texte vers la gauche */
+    margin-bottom: 15px; /* Espacement en dessous du conteneur */
+}
+
+.nom_UE {
+    font-size: 20px;   /* Taille du texte */
+    color: rgb(21, 126, 49); /* Texte coloré en vert */
+    font-weight: bold; /* Texte en gras */
+    margin-right: 10px; /* Espacement entre le texte et la flèche */
+    text-align: left; /* Aligner à gauche */
+}
+
+/* Flèche (toggle-button) à côté du texte */
+.toggle-button {
+    background-color: #ab9b9b2e;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    border-radius: 30%; /* Arrondit les coins du bouton pour en faire un cercle */
+    transform: rotate(0deg); /* Par défaut, flèche droite */
+    transition: transform 0.3s ease-in-out;
+    width: 15px; /* Taille du carré */
+    height: 15px;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    margin-left: 0; 
+    margin-top: 0; /* Enlever ou réduire la marge supérieure */
+    /* Pas d'espacement à gauche */
+}
+
+.toggle-button:hover {
+    background-color: rgba(167, 167, 167, 0.445); /* Change la couleur au survol */
+}
+
+/* Flèche vers le bas lorsque la section est déroulée */
+.toggle-button.rotated {
+    transform: rotate(90deg);
+}
+
+/* Masquer la matière par défaut */
+.block {
+    display: none;
+}
+
+.block.show {
+    display: block;
+}
+
+/* Rest of your styles unchanged... */
+
+/* General Button Styles */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styles for the Results */
+.resultat_matiere {
+    font-size: 14px;
+    color: #555; 
+    font-weight: bolder;
+    margin-top: 10px;
+    display: block;
+}
+
+.resultat_UE {
+    font-size: 15px; 
+    color: #1E90FF; 
+    font-weight: bold; 
+    background-color: #f0f8ff; 
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
 }

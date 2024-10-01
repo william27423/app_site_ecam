@@ -1,50 +1,77 @@
-// calculMoyenne.js
 export class Calculs {
-    constructor(){
+    constructor() {}
 
-    }
     calculerMoyenne() {
-        
-        let matieres = document.querySelectorAll(".matiere")
-        for (let i = 0; i < matieres.length; i++){
-            let notes = matieres[i].querySelectorAll(".note")
-            let coefs = matieres[i].querySelectorAll(".coef")
-            let sommeNotes = 0;
-            let sommeCoefficients = 0;
-            
-            for (let j = 0; j < notes.length; j++) {
-                let note = parseFloat(notes[j].value);
-                let coef = parseInt(coefs[j].value);
-                
-                if (note < 0 || note > 20){
-                    alert("Veuillez entrer des valeurs valides pour toutes les notes (entre 0 et 20) et coefficients.");
-                    return;
+        let UEs = document.querySelectorAll(".UE");
+        this.k = 0;
+        for (let r = 0; r < UEs.length; r++) {
+            let sommemoyenne = 0;
+            let sommeDesPoids = 0;
+            let matieres = UEs[r].querySelectorAll(".matiere");
+            console.log(matieres)
+
+
+            for (let i = 0; i < matieres.length; i++) {
+                let poid = parseFloat(matieres[i].querySelector(".poid").value);
+                let notes = matieres[i].querySelectorAll(".note");
+                let coefs = matieres[i].querySelectorAll(".coef");
+                let sommeNotes = 0;
+                let sommeCoefficients = 0;
+
+                for (let j = 0; j < notes.length; j++) {
+                    let note = parseFloat(notes[j].value);
+                    let coef = parseInt(coefs[j].value);
+
+                    if (note < 0 || note > 20) {
+                        alert("Veuillez entrer des valeurs valides pour toutes les notes (entre 0 et 20) et coefficients.");
+                        return;
+                    } else if (!isNaN(note) && !isNaN(coef)) {
+                        sommeNotes += note * coef;
+                        sommeCoefficients += coef;
+                    }
                 }
-                // Vérifie que les valeurs sont valides
-                else if (isNaN(note) || isNaN(coef)) {
-                    
+
+                let moyenne = sommeNotes / sommeCoefficients;
+
+                let matiereId = `matiere${this.k}`;
+                this.k = this.k + 1;
+                const matiere = document.getElementById(matiereId);
+                let matiereMoyenneSpan = matiere.querySelector(".resultat_matiere");
+
+                if (!matiereMoyenneSpan) {
+                    matiereMoyenneSpan = document.createElement("span");
+                    matiereMoyenneSpan.className = "resultat_matiere";
+                    matiere.appendChild(matiereMoyenneSpan);
                 }
-                else {
-                sommeNotes += note * coef;
-                sommeCoefficients += coef;
-                }
+                console.log(moyenne)
+                console.log(poid)
+
+
+                matiereMoyenneSpan.textContent = "Moyenne EC: " + moyenne.toFixed(2);
+                sommemoyenne += moyenne * poid;
+                sommeDesPoids += poid;
             }
-        
-        // Calcul de la moyenne pondérée
-        let moyenne = sommeNotes / sommeCoefficients;
-        // Affiche le résultat
-        let matiereId = `matiere${i}`
-        const matiere = document.getElementById(matiereId)
-        const moyenne_span = document.createElement("span");
-        moyenne_span.textContent = "Moyenne: " + moyenne.toFixed(2);
-        moyenne_span.id ="resulat";
-        matiere.appendChild(moyenne_span);
+
+            let moyenneUE = sommemoyenne;
+
+            let blockid = `block${r}`;
+            const block = document.getElementById(blockid);
+            let UEMoyenneSpan = block.querySelector(".resultat_UE");
+
+            if (!UEMoyenneSpan) {
+                UEMoyenneSpan = document.createElement("span");
+                UEMoyenneSpan.className = "resultat_UE";
+                UEMoyenneSpan.id = `resultat_UE${r}`
+                block.appendChild(UEMoyenneSpan);
+            }
+
+            UEMoyenneSpan.textContent = "Moyenne UE: " + moyenneUE.toFixed(2);
         }
     }
-    setUE (Promotion){
+
+    setUE(Promotion) {
         const container = document.getElementById('container');
         container.innerHTML = ''; // Vider le conteneur existant
-        // Pour chaque matière dans la liste
         const PromotionDiv = document.createElement('div');
         PromotionDiv.className = 'Promotion';
         PromotionDiv.id = 'Promotion'; // Ajouter l'ID
@@ -52,108 +79,120 @@ export class Calculs {
         const nomPromotion = document.createElement('span');
         nomPromotion.className = 'nom_Promotion';
         nomPromotion.textContent = Promotion.nom;
-        
-        this.m = 0
-        PromotionDiv.appendChild(nomPromotion)
+
+        this.m = 0;
+        PromotionDiv.appendChild(nomPromotion);
         container.appendChild(PromotionDiv);
 
         Promotion.liste_UE.forEach((UE, index) => {
-            this.setMatieres(index, UE)
+            this.setMatieres(index, UE);
         });
     }
-    // Méthode principale pour afficher les matières
-    setMatieres(id, UE) {    
-        const Promotion = document.getElementById('Promotion');
 
+    setMatieres(id, UE) {
+        const Promotion = document.getElementById('Promotion');
         const UEDiv = document.createElement('div');
         UEDiv.className = 'UE';
         UEDiv.id = `UE${id}`; // Ajouter l'ID
+        const UEinfo = document.createElement('div');
+        UEinfo.className = 'nom_UE-container';
+        const blockUE = document.createElement('div');
+        blockUE.className = 'block'
+        blockUE.id = `block${id}`;
         const nomUE = document.createElement('span');
         nomUE.className = 'nom_UE';
-        nomUE.textContent = UE.nom;
+        nomUE.textContent = `UE: ${UE.nom}`;
+        const fleche = document.createElement('button');
+        fleche.className = 'toggle-button';
+        fleche.id = `toggleUE${id}`;
+        fleche.innerHTML = '&#9654;';
 
-        UEDiv.appendChild(nomUE);
+        const eventToggle = () => {
+            // Sélectionner toutes les matières dans l'UE (associée au bouton de toggle)
+            const matieresDivs = document.querySelectorAll(`#UE${id} .block`);
+        
+            // Parcourir chaque div de matière et appliquer le toggle
+            matieresDivs.forEach(matiereDiv => {
+                if (matiereDiv.style.display === 'none' || matiereDiv.style.display === '') {
+                    matiereDiv.style.display = 'block';  // Affiche la matière
+                    fleche.classList.add('rotated');     // Ajoute la rotation de la flèche
+                } else {
+                    matiereDiv.style.display = 'none';   // Masque la matière
+                    fleche.classList.remove('rotated');  // Retire la rotation de la flèche
+                }
+            });
+        };
+
+        fleche.addEventListener('click', eventToggle);
+
+        UEinfo.appendChild(nomUE);
+        UEinfo.appendChild(fleche);
+        UEDiv.appendChild(UEinfo);
+        UEDiv.appendChild(blockUE);
         Promotion.appendChild(UEDiv);
-        // Pour chaque matière dans la liste
+        console.log(UE.liste_matieres)
         UE.liste_matieres.forEach((matiere) => {
-            this.setTypes(UEDiv.id ,matiere);
+            this.setTypes(id, matiere);
         });
     }
 
-    // Méthode pour créer et ajouter les types de matières
     setTypes(UEid, matiere) {
-        const UE = document.getElementById(UEid);
-
+        const blockUEs = document.getElementById(`block${UEid}`);
         const matiereDiv = document.createElement('div');
         matiereDiv.className = 'matiere';
-        matiereDiv.id = `matiere${this.m}`; // Ajouter l'ID ici
-        this.m = this.m + 1
+        console.log(this.m + 'aaaaa'+ UEid)
+        matiereDiv.id = `matiere${this.m}`;
         const matiere_info = document.createElement('div');
-        matiere_info.className ='matiere_info'
-        matiere_info.id = `matiere_info${this.m}`
+        matiere_info.className = 'matiere_info';
 
         const nomMatiere = document.createElement('span');
         nomMatiere.className = 'nom_matiere';
-        nomMatiere.textContent = matiere.nom;
+        nomMatiere.textContent = `EC: ${matiere.nom}`;
 
-        const inputPoidMatiere = document.createElement('input');
-        inputPoidMatiere.type = 'number';
-        inputPoidMatiere.id = `poid${this.m}`;
+        const inputPoidMatiere = document.createElement('span');
         inputPoidMatiere.className = 'poid';
-        inputPoidMatiere.placeholder = 'poid';
-        inputPoidMatiere.min = 0;
-        inputPoidMatiere.max = 1;
-        inputPoidMatiere.value = matiere.poid_matiere;
-        inputPoidMatiere.step = 0.1;
+        inputPoidMatiere.value = matiere.poid_matiere
+        inputPoidMatiere.textContent = `pourcentage de l'UE: ${matiere.poid_matiere * 100}%`;
 
-
-        matiere_info.appendChild(nomMatiere)
-        matiere_info.appendChild(inputPoidMatiere)
+        matiere_info.appendChild(nomMatiere);
+        matiere_info.appendChild(inputPoidMatiere);
         matiereDiv.appendChild(matiere_info);
-        UE.appendChild(matiereDiv);
-        this.j = 0
-        // Pour chaque type d'évaluation, créer les notes et coefficients
-        matiere.liste_types_evaluation.forEach((typeEvaluation) => {
-            this.creerNoteCoef(matiereDiv.id, typeEvaluation);
+        blockUEs.appendChild(matiereDiv);
+
+        matiere.liste_types_evaluation.forEach((typeEvaluation, index) => {
+            this.creerNoteCoef(matiereDiv.id, typeEvaluation, index);
         });
+
+        this.m = this.m + 1;
     }
 
-    // Méthode pour créer les inputs de notes et coefficients
-    creerNoteCoef(matiereId, typeEvaluation) {
+    creerNoteCoef(matiereId, typeEvaluation, index) {
         const matiere = document.getElementById(matiereId);
-        // Créer des inputs pour chaque note et coefficient
         for (let i = 0; i < typeEvaluation.nombre_de_notes; i++) {
             const divNoteCoef = document.createElement('div');
             divNoteCoef.className = 'note_coef';
 
-            // Création de l'input pour le nombre de notes
             const inputNombre = document.createElement('input');
             inputNombre.type = 'number';
-            inputNombre.id = `nombre${this.j}`;
+            inputNombre.id = `nombre_${matiereId}_${index}_${i}`; // Unique ID
             inputNombre.className = 'note';
-            inputNombre.placeholder = 'Entrez le nombre';
+            inputNombre.placeholder = `note ${typeEvaluation.nom} ...`;
             inputNombre.min = 0;
             inputNombre.max = 20;
             inputNombre.step = 0.5;
 
-            // Création de l'input pour le coefficient
             const inputCoef = document.createElement('input');
             inputCoef.type = 'number';
-            inputCoef.id = `coef${this.j}`;
+            inputCoef.id = `coef_${matiereId}_${index}_${i}`; // Unique ID
             inputCoef.className = 'coef';
             inputCoef.placeholder = 'coef';
             inputCoef.min = 0;
             inputCoef.max = 10;
             inputCoef.value = typeEvaluation.coef;
 
-            // Ajout des inputs au div principal
             divNoteCoef.appendChild(inputNombre);
             divNoteCoef.appendChild(inputCoef);
-
-            // Ajouter l'ensemble au div de la matière
             matiere.appendChild(divNoteCoef);
-
-            this.j = this.j +  1
         }
     }
 }

@@ -8,16 +8,19 @@
 </head>
 <body>
 
-    <h1>Calcul de la moyenne de deux nombres (0 à 20)</h1>
+    <h1>Calculer sa moyenne</h1>
 
     <!-- Menu déroulant -->
     <div class="dropdown">
-        <button class="dropdown-button">Sélectionnez une option <span class="arrow">▼</span></button>
+        <button class="dropdown-button">Choisir une promotion <span class="arrow">▼</span></button>
         <div class="dropdown-content">
-            <button id="boutonAM3">AM3</button>
-            <a href="#">Option 2</a>
-            <a href="#">Option 3</a>
-            <a href="#">Option 4</a>
+            <button class="dropdown-item" id="boutonAM3">AM3</button>
+            <a class="dropdown-item" href="#">Option 2</a>
+            <a class="dropdown-item" href="#">Option 3</a>
+            <a class="dropdown-item" href="#">Option 4</a>
+            <a class="dropdown-item" href="#">Option 5</a>
+            <a class="dropdown-item" href="#">Option 6</a>
+            <a class="dropdown-item" href="#">Option 7</a>
         </div>
     </div>
     
@@ -26,12 +29,14 @@
         <div class="Promotion" id="Promotion">
             <span class="nom_Promotion">AM3</span>
             <div class="UE" id="UE0">
-                <span class="nom_UE">Matériaux</span>
+                <div class="nom_UE-container">
+                    <span class="nom_UE">Matériaux</span>
+                    <button class="toggle-button" id="toggleUE0">&#9654;</button> <!-- Flèche -->
+                </div>
                 <div class="matiere" id="matiere0">
-                    <div class="matiere-info">
+                    <div class="matiere_info">
                         <span class="nom_matiere">Pratique du calcul des structures</span>
-                        <input type="number" id="poid0" class="poid" placeholder="poid" min="0" max="1" step="0.1">
-
+                        <span id="poid0" class="poid">pourcentage de l'UE: 100%</span>
                     </div>
                     <div class="note_coef">
                         <input type="number" id="nombre0" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
@@ -47,17 +52,17 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
-
+    
     <!-- Affichage du résultat -->
     <p id="resultat"></p> 
     <!-- Bouton pour calculer la moyenne -->
     <button id="boutonCalcul">Calculer Moyenne</button>
-    
-    
 
     <script src="scripts/global.js"></script>
     <script type="module" src="scripts/main.js"></script>
+    <script src="scripts/toggle.js"></script>
+
 </body>
 </html>
