@@ -5,14 +5,17 @@ export class Calculs {
         let UEs = document.querySelectorAll(".UE");
         this.k = 0;
         for (let r = 0; r < UEs.length; r++) {
-            let sommemoyenne = 0;
+            let sommemoyenne = 0;   
             let sommeDesPoids = 0;
             let matieres = UEs[r].querySelectorAll(".matiere");
-            console.log(matieres)
-
+            console.log(matieres[0].querySelector(".poid"))
 
             for (let i = 0; i < matieres.length; i++) {
                 let poid = parseFloat(matieres[i].querySelector(".poid").value);
+                if (!poid){
+                    poid = parseFloat(matieres[i].querySelector(".poid").getAttribute("value"));
+                }
+                console.log(poid);
                 let notes = matieres[i].querySelectorAll(".note");
                 let coefs = matieres[i].querySelectorAll(".coef");
                 let sommeNotes = 0;
@@ -43,8 +46,7 @@ export class Calculs {
                     matiereMoyenneSpan.className = "resultat_matiere";
                     matiere.appendChild(matiereMoyenneSpan);
                 }
-                console.log(moyenne)
-                console.log(poid)
+               
 
 
                 matiereMoyenneSpan.textContent = "Moyenne EC: " + moyenne.toFixed(2);
@@ -53,9 +55,14 @@ export class Calculs {
             }
 
             let moyenneUE = sommemoyenne;
+            console.log(moyenneUE)
 
             let blockid = `block${r}`;
-            const block = document.getElementById(blockid);
+            let block = document.getElementById(blockid);
+            if (!block) {
+                block = document.getElementById('block-1')
+
+            }
             let UEMoyenneSpan = block.querySelector(".resultat_UE");
 
             if (!UEMoyenneSpan) {
@@ -130,7 +137,6 @@ export class Calculs {
         UEDiv.appendChild(UEinfo);
         UEDiv.appendChild(blockUE);
         Promotion.appendChild(UEDiv);
-        console.log(UE.liste_matieres)
         UE.liste_matieres.forEach((matiere) => {
             this.setTypes(id, matiere);
         });
@@ -140,7 +146,6 @@ export class Calculs {
         const blockUEs = document.getElementById(`block${UEid}`);
         const matiereDiv = document.createElement('div');
         matiereDiv.className = 'matiere';
-        console.log(this.m + 'aaaaa'+ UEid)
         matiereDiv.id = `matiere${this.m}`;
         const matiere_info = document.createElement('div');
         matiere_info.className = 'matiere_info';

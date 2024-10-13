@@ -9,7 +9,7 @@
 <body>
 
     <h1>Calculer sa moyenne</h1>
-
+    <img src="logo_ecam.png" alt="logo_ecam">
     <!-- Menu déroulant -->
     <div class="dropdown">
         <button class="dropdown-button">Choisir une promotion <span class="arrow">▼</span></button>
@@ -33,22 +33,24 @@
                     <span class="nom_UE">Matériaux</span>
                     <button class="toggle-button" id="toggleUE0">&#9654;</button> <!-- Flèche -->
                 </div>
-                <div class="matiere" id="matiere0">
-                    <div class="matiere_info">
-                        <span class="nom_matiere">Pratique du calcul des structures</span>
-                        <span id="poid0" class="poid">pourcentage de l'UE: 100%</span>
-                    </div>
-                    <div class="note_coef">
-                        <input type="number" id="nombre0" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
-                        <input type="number" id="coef0" class="coef" placeholder="coef" min="0" max="10">
-                    </div>
-                    <div class="note_coef">
-                        <input type="number" id="nombre1" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
-                        <input type="number" id="coef1" class="coef" placeholder="coef" min="0" max="10">
-                    </div>
-                    <div class="note_coef">
-                        <input type="number" id="nombre2" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
-                        <input type="number" id="coef2" class="coef" placeholder="coef" min="0" max="10">
+                <div class="bloc" id="block-1">
+                    <div class="matiere" id="matiere0">
+                        <div class="matiere_info">
+                            <span class="nom_matiere">Pratique du calcul des structures</span>
+                            <span class="poid" value="1">pourcentage de l'UE: 100%</span>
+                        </div>
+                        <div class="note_coef">
+                            <input type="number" id="nombre0" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
+                            <input type="number" id="coef0" class="coef" placeholder="coef" min="0" max="10" value="1">
+                        </div>
+                        <div class="note_coef">
+                            <input type="number" id="nombre1" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
+                            <input type="number" id="coef1" class="coef" placeholder="coef" min="0" max="10" value="1">
+                        </div>
+                        <div class="note_coef">
+                            <input type="number" id="nombre2" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
+                            <input type="number" id="coef2" class="coef" placeholder="coef" min="0" max="10" value="1">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +64,6 @@
 
     <script src="scripts/global.js"></script>
     <script type="module" src="scripts/main.js"></script>
-    <script src="scripts/toggle.js"></script>
 
 </body>
 </html>

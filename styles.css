@@ -16,6 +16,15 @@ h1 {
     text-align: center;
 }
 
+img {
+    position: absolute;  /* Permet de positionner l'image de manière absolue */
+    top: 0;              /* La place en haut de la page */
+    right: 0;            /* La place à droite de la page */
+    width: 150px;        /* Largeur de l'image (modifiable) */
+    height: auto;        /* Garde les proportions de l'image */
+    margin: 10px;        /* Marge pour éviter qu'elle ne touche le bord de la page */
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -30,7 +39,6 @@ h1 {
     margin-bottom: 2px;
 }
 
-
 /* Matière Info */
 .matiere_info {
     display: flex;
@@ -43,7 +51,7 @@ h1 {
     margin-left: 10px;
     font-style: italic;
     text-decoration: underline;
-    background-color: rgb(123, 203, 123);
+    background-color: #3498db; /* Bleu clair */
     color: white;
     padding: 2px 5px;
     flex: 1; /* Prend tout l'espace restant */
@@ -85,8 +93,8 @@ input.coef {
     padding: 8px;
     font-size: 14px;
     border-radius: 5px;
-    background-color: #e0f7fa;
-    border: 1px solid #00796b;
+    background-color: #d9f0fc; /* Bleu clair pour le fond */
+    border: 1px solid #2c3e50; /* Bleu foncé pour la bordure */
     font-weight: bold;
 }
 
@@ -97,7 +105,7 @@ input.coef {
 }
 
 .dropdown-button {
-    background-color: #4CAF50;
+    background-color: #43517d; /* Bleu clair */
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -142,7 +150,7 @@ input.coef {
 
 .nom_UE {
     font-size: 20px;   /* Taille du texte */
-    color: rgb(21, 126, 49); /* Texte coloré en vert */
+    color: #1e47a6; /* Bleu clair */
     font-weight: bold; /* Texte en gras */
     margin-right: 10px; /* Espacement entre le texte et la flèche */
     text-align: left; /* Aligner à gauche */
@@ -189,7 +197,7 @@ input.coef {
 
 /* General Button Styles */
 button {
-    background-color: #4CAF50;
+    background-color: #3498db; /* Bleu clair */
     color: white;
     padding: 10px;
     border: none;
@@ -202,7 +210,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #1e47a6; /* Bleu légèrement plus foncé */
 }
 
 /* Styles for the Results */
