@@ -104,7 +104,7 @@ export class Calculs {
         const UEinfo = document.createElement('div');
         UEinfo.className = 'nom_UE-container';
         const blockUE = document.createElement('div');
-        blockUE.className = 'block'
+        blockUE.className = 'block';
         blockUE.id = `block${id}`;
         const nomUE = document.createElement('span');
         nomUE.className = 'nom_UE';

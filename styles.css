@@ -1,18 +1,22 @@
+
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrer tout le contenu horizontalement */
     justify-content: center; /* Centrer tout le contenu verticalement */
     min-height: 100vh;
+    margin: 0 auto;          /* Centre l'élément horizontalement */
+
 }
 
 h1 {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
+    font-size: 4vh; 
+
     text-align: center;
 }
 
@@ -20,16 +24,15 @@ img {
     position: absolute;  /* Permet de positionner l'image de manière absolue */
     top: 0;              /* La place en haut de la page */
     right: 0;            /* La place à droite de la page */
-    width: 150px;        /* Largeur de l'image (modifiable) */
+    width: 15%;          /* Largeur de l'image en pourcentage (modifiable) */
     height: auto;        /* Garde les proportions de l'image */
-    margin: 10px;        /* Marge pour éviter qu'elle ne touche le bord de la page */
+    margin: 1%;          /* Marge pour éviter qu'elle ne touche le bord de la page */
 }
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 150%;
+    width: 90%;
 }
 
 /* Promotion and UE Layout */
@@ -112,6 +115,9 @@ input.coef {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
 }
 
 .dropdown-content {
@@ -122,21 +128,37 @@ input.coef {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 1;
+    width: 100%;
+
 }
 
-.dropdown-content a {
+.dropdown-content button{
     color: black;
     padding: 12px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
 
 .dropdown.show .dropdown-content {
     display: block;
+}
+
+.boutonCalcul:hover, .dropdown-button:hover {
+    background-color: #1e47a6; /* Bleu légèrement plus foncé */
+}
+
+.dropdown-item{
+    background-color: white; /* Bleu clair */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    
+}
+.dropdown-item:hover {
+    background-color: #a4aab9; /* Bleu légèrement plus foncé */
 }
 
 /* Alignement du titre de l'UE et de la flèche */
@@ -158,21 +180,22 @@ input.coef {
 
 /* Flèche (toggle-button) à côté du texte */
 .toggle-button {
-    background-color: #ab9b9b2e;
+    background-color: #ab9b9b2e; /* Bleu clair */
+    color: white;
     border: none;
+    border-radius: 30%; /* Cercle */
     cursor: pointer;
     font-size: 10px;
-    border-radius: 30%; /* Arrondit les coins du bouton pour en faire un cercle */
-    transform: rotate(0deg); /* Par défaut, flèche droite */
-    transition: transform 0.3s ease-in-out;
     width: 15px; /* Taille du carré */
     height: 15px;
     display: flex;
     justify-content: center; /* Centrer horizontalement */
     align-items: center; /* Centrer verticalement */
-    margin-left: 0; 
-    margin-top: 0; /* Enlever ou réduire la marge supérieure */
-    /* Pas d'espacement à gauche */
+    transition: transform 0.3s ease-in-out;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 10px;
+
 }
 
 .toggle-button:hover {
@@ -196,7 +219,11 @@ input.coef {
 /* Rest of your styles unchanged... */
 
 /* General Button Styles */
-button {
+
+
+
+
+.boutonCalcul {
     background-color: #3498db; /* Bleu clair */
     color: white;
     padding: 10px;
@@ -209,9 +236,6 @@ button {
     margin-top: 20px;
 }
 
-button:hover {
-    background-color: #1e47a6; /* Bleu légèrement plus foncé */
-}
 
 /* Styles for the Results */
 .resultat_matiere {
@@ -239,4 +263,226 @@ p {
     color: #333;
     margin-top: 20px;
     text-align: center;
+}
+
+/* Global Styles */
+@media (max-width: 768px) {
+
+    /* Promotion and UE Layout */
+    .Promotion, .UE, .matiere {
+        width: 100%; /* Limiter la largeur des sections à 100% */
+        max-width: 550px; /* Limiter la largeur maximale pour les grandes écrans */
+        margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
+    }
+
+    /* Matière Info */
+    .matiere_info {
+        display: flex;
+        justify-content: space-between; /* Séparer le nom de la matière et le pourcentage */
+        align-items: center; /* Alignement vertical centré */
+        margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
+    }
+
+    .nom_matiere {
+        margin-left: 2%; /* Changement en pourcentage */
+        font-style: italic;
+        text-decoration: underline;
+        background-color: #3498db; /* Bleu clair */
+        color: white;
+        padding: 1%; /* Changement en pourcentage */
+        flex: 1; /* Prend tout l'espace restant */
+    }
+
+    .poid {
+        font-size: 0.8rem; /* Remplace 12px par une taille relative */
+        margin-left: 0%; /* Changement en pourcentage */
+        text-align: right; /* Alignement à droite */
+        width: 18%; /* Taille du champ pourcentage */
+    }
+
+    /* Layout for Note and Coefficient */
+    .note_coef {
+        display: grid;
+
+        grid-template-columns: 1fr 15%; /* Deux colonnes : une pour la note, une pour le coefficient */
+        grid-gap: 2%; /* Espacement entre les colonnes en pourcentage */
+        align-items: center; /* Aligner verticalement les éléments */
+        width: 100%;
+        margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
+    }
+
+    /* Input Fields */
+
+    input {
+        padding: 4%; /* Changement en pourcentage */
+        font-size: 1rem; /* Remplace 14px par une taille relative */
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input.note {
+        width: 100%; /* Prend toute la largeur disponible dans la grille */
+    }
+
+
+    input.coef {
+        width: 100%; /* Largeur fixe pour les coefficients, en pourcentage */
+        padding: 21%; /* Changement en pourcentage */
+        font-size: 1rem; /* Remplace 14px par une taille relative */
+        border-radius: 5px;
+        background-color: #d9f0fc; /* Bleu clair pour le fond */
+        border: 1px solid #2c3e50; /* Bleu foncé pour la bordure */
+        font-weight: bold;
+        
+    }
+    /* Dropdown Menu Styles */
+    .dropdown {
+        width : 25%;
+        position: relative;
+        display: inline-block;
+        
+    }
+
+    .dropdown-button {
+        
+        background-color: #43517d; /* Bleu clair */
+        color: white;
+        padding: 4%; /* Changement en pourcentage */
+        font-size: 1rem; /* Remplace 16px par une taille relative */
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 100%; /* Ajustement en pourcentage */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 2%; /* Changement en pourcentage */
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+        display: block;
+    }
+
+    /* Alignement du titre de l'UE et de la flèche */
+    .nom_UE-container {
+        display: flex;
+        align-items: center; /* Centrer verticalement la flèche et le texte */
+        justify-content: flex-start;
+        padding: 0%; /* Changement en pourcentage */
+        
+        margin-bottom: 5%; /* Changement de margin-bottom en pourcentage */
+    }
+
+    .nom_UE {
+        font-size: 1.25rem; /* Remplace 20px par une taille relative */
+        color: #1e47a6; /* Bleu clair */
+        font-weight: bold; /* Texte en gras */
+        margin-right: 2%; /* Changement en pourcentage */
+        text-align: left; /* Aligner à gauche */
+    }
+
+    /* Flèche (toggle-button) à côté du texte */
+    .toggle-button {
+        background-color: #ab9b9b2e;
+        border: none;
+        cursor: pointer;
+        font-size: 0.625rem; /* Remplace 10px par une taille relative */
+        border-radius: 30%; /* Arrondit les coins du bouton pour en faire un cercle */
+        transform: rotate(0deg); /* Par défaut, flèche droite */
+        transition: transform 0.3s ease-in-out;
+        width: 3vh; /* Ajustement en pourcentage */
+        height: 3vh; /* Ajustement en pourcentage */
+        display: flex;
+        justify-content: center; /* Centrer horizontalement */
+        align-items: center; /* Centrer verticalement */
+    }
+
+    .toggle-button:hover {
+        background-color: rgba(167, 167, 167, 0.445); /* Change la couleur au survol */
+    }
+
+    /* Flèche vers le bas lorsque la section est déroulée */
+    .toggle-button.rotated {
+        transform: rotate(90deg);
+    }
+
+    /* Masquer la matière par défaut */
+    .block {
+        display: none;
+    }
+
+    .block.show {
+        display: block;
+    }
+
+    /* Rest of your styles unchanged... */
+
+    /* General Button Styles */
+    button {
+        background-color: #3498db; /* Bleu clair */
+        color: white;
+        padding: 1%; /* Changement en pourcentage */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem; /* Remplace 16px par une taille relative */
+        width: 100%;
+        max-width: 100%; /* Limite la largeur du bouton en pourcentage */
+        margin-top: 1%; /* Changement en pourcentage */
+    }
+
+    button:hover {
+        background-color: #1e47a6; /* Bleu légèrement plus foncé */
+    }
+    .boutonCalcul{
+        width: 60%;
+        padding: 15px; 
+
+    }
+
+    /* Styles for the Results */
+    .resultat_matiere {
+        font-size: 1rem; /* Remplace 14px par une taille relative */
+        color: #555; 
+        font-weight: bolder;
+        margin-top: 2%; /* Changement en pourcentage */
+        display: block;
+    }
+
+    .resultat_UE {
+        font-size: 1rem; /* Remplace 15px par une taille relative */
+        color: #1E90FF; 
+        font-weight: bold; 
+        background-color: #f0f8ff; 
+        padding: 2%; /* Changement en pourcentage */
+        border-radius: 5px;
+        margin-top: 2%; /* Changement en pourcentage */
+        display: block;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.125rem; /* Remplace 18px par une taille relative */
+        color: #333;
+        margin-top: 3%; /* Changement en pourcentage */
+        text-align: center;
+    }
 }
