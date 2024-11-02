@@ -109,6 +109,7 @@ export class Calculs {
         const nomUE = document.createElement('span');
         nomUE.className = 'nom_UE';
         nomUE.textContent = `UE: ${UE.nom}`;
+        nomUE.role = 'button'
         const fleche = document.createElement('button');
         fleche.className = 'toggle-button';
         fleche.id = `toggleUE${id}`;
@@ -131,6 +132,7 @@ export class Calculs {
         };
 
         fleche.addEventListener('click', eventToggle);
+        nomUE.addEventListener('click',eventToggle)
 
         UEinfo.appendChild(nomUE);
         UEinfo.appendChild(fleche);

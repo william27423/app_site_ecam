@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdown = document.querySelector('.dropdown');
     const dropdownItems = document.querySelectorAll('.dropdown-item'); // Sélection des éléments du dropdown
 
+
+    document.querySelector('.nom_UE').addEventListener('click', function() {
+        alert('Vous avez cliqué sur le span!');
+    });
+    
     // Afficher/cacher le dropdown lorsque le bouton est cliqué
     dropdownButton.addEventListener('click', function() {
         dropdown.classList.toggle('show');
