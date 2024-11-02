@@ -9,6 +9,123 @@ const app = new Calculs();
 const boutonCalcul = document.getElementById("boutonCalcul");
 boutonCalcul.addEventListener('click', app.calculerMoyenne);
 
+let ENG2_3S = new Promotion('ENG2-semester3', [
+    new UE('Mathematics for Engineering', [
+        new Matiere('Mathematics for Engineers', 0.6, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Databases', 0.1, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Introduction to Numerical Simulation', 0.3, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+    ], 0),
+    new UE('Mecanical Engineering', [
+        new Matiere('Mecanical Design', 0.3, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('General Mecanics', 0.25, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Fluid Mecanics', 0.45, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+    ], 0),
+    new UE('Electrical Engineering', [
+        new Matiere('Digital Design', 0.2, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Electrostatics & Magnetostatics', 0.5, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Electronic Circuits & Systems', 0.3, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+    ], 0),
+    new UE('Multidiciplinary Projects', [
+        new Matiere('Pathway Discovery Workshops / Winter Schools', 0.5, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Sustainable Comsumption & Production', 0.2, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Multidisciplinary  project', 0.3, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+    ], 0),
+    new UE('Professional and Personal Development', [
+        new Matiere('Advanced English Skills', 0.25, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Economics and Financial Systems', 0.3, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Foreign as a Foreign Language', 0.25, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+        new Matiere('Sports Activities', 0.2, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+    ], 0),
+    new UE('Operator Internship', [
+        new Matiere('Operator Internships', 1.0, [
+            new TypeEvaluation('Midterm1', 1, 1),
+            new TypeEvaluation('Midterm2', 1, 1),
+            new TypeEvaluation('Final', 1, 1),
+            new TypeEvaluation('continuous monitoring', 1, 1),
+        ]),
+    ], 0),
+]);
+
 let AM3 = new Promotion('AM3', [
     new UE('Matériaux et Structures : Applications', [
         new Matiere('Pratique du Calcul des Structures', 0.4, [
@@ -116,3 +233,5 @@ let liste = new Promotion('AM3',[new UE('conception',[new Matiere('structure',[n
 const boutonAM3 = document.getElementById("boutonAM3");
 boutonAM3.addEventListener('click', () => app.setUE(AM3));
 
+const boutonENG2_3s = document.getElementById("boutonENG2-3s");
+boutonENG2_3s.addEventListener('click', () => app.setUE(ENG2_3S));
