@@ -8,14 +8,11 @@ export class Calculs {
             let sommemoyenne = 0;   
             let sommeDesPoids = 0;
             let matieres = UEs[r].querySelectorAll(".matiere");
-            console.log(matieres[0].querySelector(".poid"))
-
             for (let i = 0; i < matieres.length; i++) {
                 let poid = parseFloat(matieres[i].querySelector(".poid").value);
                 if (!poid){
                     poid = parseFloat(matieres[i].querySelector(".poid").getAttribute("value"));
                 }
-                console.log(poid);
                 let notes = matieres[i].querySelectorAll(".note");
                 let coefs = matieres[i].querySelectorAll(".coef");
                 let sommeNotes = 0;
@@ -23,8 +20,7 @@ export class Calculs {
 
                 for (let j = 0; j < notes.length; j++) {
                     let note = parseFloat(notes[j].value);
-                    let coef = parseInt(coefs[j].value);
-
+                    let coef = parseFloat(coefs[j].value);
                     if (note < 0 || note > 20) {
                         alert("Veuillez entrer des valeurs valides pour toutes les notes (entre 0 et 20) et coefficients.");
                         return;
@@ -42,37 +38,51 @@ export class Calculs {
                 let matiereMoyenneSpan = matiere.querySelector(".resultat_matiere");
 
                 if (!matiereMoyenneSpan) {
-                    matiereMoyenneSpan = document.createElement("span");
-                    matiereMoyenneSpan.className = "resultat_matiere";
-                    matiere.appendChild(matiereMoyenneSpan);
+                    if (!isNaN(moyenne.toFixed(2))) {
+                        matiereMoyenneSpan = document.createElement("span");
+                        matiereMoyenneSpan.className = "resultat_matiere";
+                        matiere.appendChild(matiereMoyenneSpan);
+                        matiereMoyenneSpan.textContent = "Moyenne EC: " + moyenne.toFixed(2);
+                    }
                 }
-               
-
-
-                matiereMoyenneSpan.textContent = "Moyenne EC: " + moyenne.toFixed(2);
+                else{
+                    if (!isNaN(moyenne.toFixed(2))){
+                        matiereMoyenneSpan.textContent = "Moyenne EC: " + moyenne.toFixed(2);
+                    }
+                    else{
+                        matiereMoyenneSpan.remove()
+                    }
+                }
                 sommemoyenne += moyenne * poid;
                 sommeDesPoids += poid;
             }
 
             let moyenneUE = sommemoyenne;
-            console.log(moyenneUE)
 
             let blockid = `block${r}`;
             let block = document.getElementById(blockid);
             if (!block) {
                 block = document.getElementById('block-1')
-
             }
             let UEMoyenneSpan = block.querySelector(".resultat_UE");
-
+            console.log(UEMoyenneSpan)
             if (!UEMoyenneSpan) {
-                UEMoyenneSpan = document.createElement("span");
-                UEMoyenneSpan.className = "resultat_UE";
-                UEMoyenneSpan.id = `resultat_UE${r}`
-                block.appendChild(UEMoyenneSpan);
+                if (!isNaN(moyenneUE.toFixed(2))) {
+                    UEMoyenneSpan = document.createElement("span");
+                    UEMoyenneSpan.className = "resultat_UE";
+                    UEMoyenneSpan.id = `resultat_UE${r}`
+                    block.appendChild(UEMoyenneSpan);
+                    UEMoyenneSpan.textContent = "Moyenne UE: " + moyenneUE.toFixed(2);
+                }
             }
-
-            UEMoyenneSpan.textContent = "Moyenne UE: " + moyenneUE.toFixed(2);
+            else{
+                if (!isNaN(moyenneUE.toFixed(2))){
+                    UEMoyenneSpan.textContent = "Moyenne UE: " + moyenneUE.toFixed(2);
+                }
+                else{
+                    UEMoyenneSpan.remove()
+                }
+            }
         }
     }
 

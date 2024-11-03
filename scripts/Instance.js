@@ -322,3 +322,132 @@ export const AM3 = new Promotion('AM3', [
     ], 4),
 ]);
 
+export const AM4 = new Promotion('AM4', [
+    new UE('DYNAMIQUE DES STRUCTURES', [
+        new Matiere('MÃ©canique - Vibrations', 1.0, [
+            new TypeEvaluation('DS', 2.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+    ], 2),
+    new UE('L\'ENTREPRISE INDUSTRIELLE DU FUTUR', [
+        new Matiere('Robotisation industrielle', 0.4, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+        new Matiere('Maintenance 1', 0.2, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Fresh connection', 0.4, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+    ], 3),
+    new UE('NUMERIQUE 3', [
+        new Matiere('SystÃ¨mes NumÃ©riques', 0.3, [
+            new TypeEvaluation('DS', 2.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('Recherche OpÃ©rationnelle', 0.2, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Base rÃ©seau et SI', 0.5, [
+            new TypeEvaluation('DS', 3.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+    ], 4),
+    new UE('ENERGETIQUE 3', [
+        new Matiere('Commande des Machines Electriques', 0.25, [ 
+            new TypeEvaluation('DS', 2.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('Transferts thermiques', 0.75, [
+            new TypeEvaluation('DS', 2.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+    ], 4),
+    new UE('SociÃ©tÃ©, Management & Entrepreunariat 3 Erin MONAGHAN', [
+        new Matiere('Anglais 3', 0.6, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+        new Matiere('LV2 optionnelle', 0.0, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+        new Matiere('Gestion du capital humain', 0.2, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+        new Matiere('Fil rouge Entreprenariat', 0.2, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+    ], 3),
+    new UE('PROJET LEONARD', [
+        new Matiere('Projet LÃ©onard', 1.0, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 5),
+    new UE('STAGE D\'APPLICATION', [
+        new Matiere('Stage d\'application', 1.0, [
+            new TypeEvaluation('Stage', 1.0, 1),
+        ]),
+    ], 3),
+    new UE('Coloration Usine du Futur 2 Olivier COUROUGE', [     
+        new Matiere('Projet d\' Organisation Industrielle 3', 0.8, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+        new Matiere('Simulation ligne de production', 0.1, [     
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('Maintenance 2', 0.1, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 6),
+    new UE('Coloration SystÃ¨mes NumÃ©riques 2  (Advanced Software and Hardware)', [
+        new Matiere('Machine Learning', 0.25, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+        new Matiere('Langages API et SystÃ¨mes Robotiques', 0.25, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+        new Matiere('Asservissement numÃ©rique', 0.25, [
+            new TypeEvaluation('DS', 2.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('SystÃ¨mes embarquÃ©s connectÃ©s', 0.25, [   
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+    ], 6),
+    new UE('Dimensionnement avancÃ© et optimisation', [
+        new Matiere('Rupture et endommagement', 0.5, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('Expertise vibratoire', 0.3, [
+            new TypeEvaluation('DS', 2.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('Projet Optimisation topologique', 0.2, [    
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 6),
+    new UE('Coloration Transition EnergÃ©tique 2', [
+        new Matiere('Hydraulique industrielle', 0.35, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Acoustique', 0.25, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Production et distribution d\'Ã©lectricitÃ©', 0.2, [
+            new TypeEvaluation('DS', 2.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('Enjeux Ã©nergÃ©tiques', 0.2, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+    ], 6),
+    new UE('Coloration "Piloter un projet ENR" SÃ©verine DELAVERNHE', [
+        new Matiere('Analyse d\'un modÃ¨le Ã©conomique d\'un projet ENR', 0.3, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Valorisation Ã©nergÃ©tique de la biomasse', 0.7, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 6),
+]);
