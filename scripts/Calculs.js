@@ -1,6 +1,117 @@
 export class Calculs {
     constructor() {}
 
+    mettrefleche(boutonClasse){
+        const dropdown_button = document.getElementById("dropdown-button");
+
+        dropdown_button.textContent = boutonClasse.textContent
+        const arrowSpan = document.createElement("span");
+        arrowSpan.className = "arrow";
+        arrowSpan.textContent = "▼";
+
+        dropdown_button.appendChild(arrowSpan);
+    }
+
+    mettreflecheColoration(boutonClasse){
+        const dropdown_button = document.getElementById("dropdown-button-spe");
+
+        dropdown_button.textContent = boutonClasse.textContent
+        const arrowSpan = document.createElement("span");
+        arrowSpan.className = "arrow";
+        arrowSpan.textContent = "▼";
+
+        dropdown_button.appendChild(arrowSpan);
+    }
+    
+    ajouter_dropdown_spe(){
+        const dropdown_t = document.getElementById("dropdown-spe")
+        if (dropdown_t != null){
+            dropdown_t.remove()
+        }
+
+
+        const body = document.body;
+
+        const dropdown = document.createElement("div")
+        dropdown.className ="dropdown"
+        dropdown.id="dropdown-spe"
+
+        //const  = document.getElementById("dropdown-button");
+        const dropdown_button_spe = document.createElement("button")
+        dropdown_button_spe.className = "dropdown-button"
+        dropdown_button_spe.id = "dropdown-button-spe"
+        dropdown_button_spe.textContent = "Choisir une coloration"
+        const arrowSpan = document.createElement("span");
+        arrowSpan.className = "arrow";
+        arrowSpan.textContent = "▼";
+
+        dropdown_button_spe.appendChild(arrowSpan);
+        dropdown.appendChild(dropdown_button_spe);
+        body.insertBefore(dropdown, body.children[3]);
+    }
+    enlever_dropdown_spe(){
+        const dropdown_t = document.getElementById("dropdown-spe")
+        if (dropdown_t != null){
+            dropdown_t.remove()
+        }
+    }
+
+    ajouter_item_spe(liste_spe){
+        const drop_down = document.getElementById("dropdown-spe")
+        //const  = document.getElementById("dropdown-button");
+        const dropdown_content = document.createElement("div")
+        dropdown_content.className = "dropdown-content"
+        dropdown_content.id = "dropdown-content-spe"
+        liste_spe.forEach((Spe) => {
+            const dropdown_item = document.createElement("button")
+            dropdown_item.className = "dropdown-item";
+            dropdown_item.id = `Bouton${Spe.nom}`;
+            dropdown_item.textContent = Spe.nom;
+            dropdown_content.appendChild(dropdown_item);
+        });
+        drop_down.appendChild(dropdown_content);
+        const dropdownButton = document.querySelector('#dropdown-button');
+        const dropdownButtonSpe = document.querySelector('#dropdown-button-spe');
+        const dropdown = document.querySelector('#dropdown-spe');
+        const dropdownItems = document.querySelectorAll('#dropdown-content-spe .dropdown-item'); // Sélection des éléments du dropdown
+        
+        dropdownButton.addEventListener('click', function() {
+            dropdown.classList.remove('show');
+        });
+
+        // Afficher/cacher le dropdown lorsque le bouton est cliqué
+        dropdownButtonSpe.addEventListener('click', function() {
+            dropdown.classList.toggle('show');
+        });
+        
+        // Cacher le dropdown si on clique en dehors
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropdown-button') && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        const UEs = document.querySelectorAll(".UE")
+        // Cacher le dropdown lorsqu'on clique sur un élément du dropdown
+        dropdownItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const Coloration = document.querySelector("#Coloration")
+                const Coloration_nom = document.querySelector("#Coloration .nom_UE")
+                dropdown.classList.remove('show');
+                if (Coloration_nom == null) {
+                    this.setMatieres(UEs.length, liste_spe[index], 1);
+                    this.mettreflecheColoration(item)
+                }
+                else if ((Coloration_nom != null) && !(Coloration_nom.textContent.includes(liste_spe[index].nom))){
+                    Coloration.remove()
+                    this.setMatieres(UEs.length, liste_spe[index], 1);
+                    this.mettreflecheColoration(item)
+
+                }
+                 
+            });
+        });
+    }
+
     calculerMoyenne() {
         let UEs = document.querySelectorAll(".UE");
         this.k = 0;
@@ -65,7 +176,6 @@ export class Calculs {
                 block = document.getElementById('block-1')
             }
             let UEMoyenneSpan = block.querySelector(".resultat_UE");
-            console.log(UEMoyenneSpan)
             if (!UEMoyenneSpan) {
                 if (!isNaN(moyenneUE.toFixed(2))) {
                     UEMoyenneSpan = document.createElement("span");
@@ -102,15 +212,29 @@ export class Calculs {
         container.appendChild(PromotionDiv);
 
         Promotion.liste_UE.forEach((UE, index) => {
-            this.setMatieres(index, UE);
+            this.setMatieres(index, UE, 0);
         });
+        if (Promotion.liste_Spe != undefined){
+            this.ajouter_dropdown_spe();
+            this.ajouter_item_spe(Promotion.liste_Spe)
+        }
+        else{
+            this.enlever_dropdown_spe();
+
+        }
     }
 
-    setMatieres(id, UE) {
+    setMatieres(id, UE, nb) {
         const Promotion = document.getElementById('Promotion');
         const UEDiv = document.createElement('div');
         UEDiv.className = 'UE';
-        UEDiv.id = `UE${id}`; // Ajouter l'ID
+        if (nb == 1){
+            UEDiv.id = "Coloration"; // Ajouter l'ID
+        }
+        else{
+            UEDiv.id = `UE${id}`; // Ajouter l'ID
+
+        }
         const UEinfo = document.createElement('div');
         UEinfo.className = 'nom_UE-container';
         const blockUE = document.createElement('div');
@@ -120,25 +244,22 @@ export class Calculs {
         nomUE.className = 'nom_UE';
         nomUE.textContent = `UE: ${UE.nom}`;
         nomUE.role = 'button'
+        if (nb == 1){
+            nomUE.id = "Colorations"; // Ajouter l'ID pour le css
+        }
         const fleche = document.createElement('button');
         fleche.className = 'toggle-button';
         fleche.id = `toggleUE${id}`;
         fleche.innerHTML = '&#9654;';
 
         const eventToggle = () => {
-            // Sélectionner toutes les matières dans l'UE (associée au bouton de toggle)
-            const matieresDivs = document.querySelectorAll(`#UE${id} .block`);
-        
-            // Parcourir chaque div de matière et appliquer le toggle
-            matieresDivs.forEach(matiereDiv => {
-                if (matiereDiv.style.display === 'none' || matiereDiv.style.display === '') {
-                    matiereDiv.style.display = 'block';  // Affiche la matière
-                    fleche.classList.add('rotated');     // Ajoute la rotation de la flèche
-                } else {
-                    matiereDiv.style.display = 'none';   // Masque la matière
-                    fleche.classList.remove('rotated');  // Retire la rotation de la flèche
-                }
-            });
+            if (blockUE.style.display === 'none' || blockUE.style.display === '') {
+                blockUE.style.display = 'block';  // Affiche la matière
+                fleche.classList.add('rotated');     // Ajoute la rotation de la flèche
+            } else {
+                blockUE.style.display = 'none';   // Masque la matière
+                fleche.classList.remove('rotated');  // Retire la rotation de la flèche
+            }
         };
 
         fleche.addEventListener('click', eventToggle);

@@ -1,7 +1,8 @@
 export class Promotion{
-    constructor (nom, liste_UE){
+    constructor (nom, liste_UE, liste_Spe){
         this.nom = nom;
         this.liste_UE = liste_UE;
+        this.liste_Spe = liste_Spe
     }
 }
 

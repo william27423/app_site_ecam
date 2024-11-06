@@ -101,8 +101,11 @@ input.coef {
     font-weight: bold;
 }
 
+
 /* Dropdown Menu Styles */
-.dropdown {
+.dropdown{
+    width : 25%;
+
     position: relative;
     display: inline-block;
 }
@@ -116,7 +119,6 @@ input.coef {
     cursor: pointer;
     border-radius: 5px;
     width: 100%;
-    max-width: 300px;
     margin-top: 20px;
 }
 
@@ -176,6 +178,9 @@ input.coef {
     font-weight: bold; /* Texte en gras */
     margin-right: 10px; /* Espacement entre le texte et la flèche */
     text-align: left; /* Aligner à gauche */
+}
+#Colorations{
+    color: #6f88e1;
 }
 
 /* Flèche (toggle-button) à côté du texte */
