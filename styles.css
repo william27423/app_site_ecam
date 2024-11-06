@@ -39,9 +39,15 @@ img {
 .Promotion, .UE, .matiere {
     width: 150%;
     max-width: 550px; /* Limiter la largeur des sections */
-    margin-bottom: 2px;
+    margin-top: 15px;
 }
 
+.nom_Promotion{
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 50px;
+
+}
 /* Matière Info */
 .matiere_info {
     display: flex;
@@ -238,7 +244,8 @@ input.coef {
     font-size: 16px;
     width: 100%;
     max-width: 300px;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
@@ -277,7 +284,7 @@ p {
     .Promotion, .UE, .matiere {
         width: 100%; /* Limiter la largeur des sections à 100% */
         max-width: 550px; /* Limiter la largeur maximale pour les grandes écrans */
-        margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
+        margin-top: 6%; /* Changement de margin-bottom en pourcentage */
     }
 
     /* Matière Info */
@@ -344,7 +351,7 @@ p {
     }
     /* Dropdown Menu Styles */
     .dropdown {
-        width : 25%;
+        width : 60%;
         position: relative;
         display: inline-block;
         
@@ -460,6 +467,7 @@ p {
     .boutonCalcul{
         width: 60%;
         padding: 15px; 
+        margin-bottom: 10%;
 
     }
 
