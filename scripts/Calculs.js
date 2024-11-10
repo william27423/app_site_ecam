@@ -1,3 +1,5 @@
+import { TypeEvaluation } from './Classe.js';
+
 export class Calculs {
     constructor() {}
 
@@ -164,12 +166,14 @@ export class Calculs {
                         matiereMoyenneSpan.remove()
                     }
                 }
-                sommemoyenne += moyenne * poid;
-                sommeDesPoids += poid;
+                if(!isNaN(moyenne) ){
+                    
+                    sommemoyenne += moyenne * poid;
+                    sommeDesPoids += poid;
+                }
             }
-
-            let moyenneUE = sommemoyenne;
-
+            console.log(sommeDesPoids)
+            let moyenneUE = sommemoyenne/sommeDesPoids;
             let blockid = `block${r}`;
             let block = document.getElementById(blockid);
             if (!block) {
@@ -177,7 +181,7 @@ export class Calculs {
             }
             let UEMoyenneSpan = block.querySelector(".resultat_UE");
             if (!UEMoyenneSpan) {
-                if (!isNaN(moyenneUE.toFixed(2))) {
+                if (moyenneUE.toFixed(2) != 0.00) {
                     UEMoyenneSpan = document.createElement("span");
                     UEMoyenneSpan.className = "resultat_UE";
                     UEMoyenneSpan.id = `resultat_UE${r}`
@@ -292,20 +296,35 @@ export class Calculs {
         inputPoidMatiere.value = matiere.poid_matiere
         inputPoidMatiere.textContent = `pourcentage de l'UE: ${matiere.poid_matiere * 100}%`;
 
+        const aditional_div = document.createElement('div')
+        aditional_div.className = "aditional_div";
+        aditional_div.id = `aditional_div${this.m}`;
+        const aditional_button = document.createElement('button')
+        aditional_button.className="aditional_button"
+        aditional_button.id = `${this.m}`;
+        aditional_button.textContent = "+"
+        aditional_button.addEventListener('click',() => this.creerNoteCoef(matiereDiv.id,new TypeEvaluation('nouvelle note',1,1),1));
+        aditional_div.appendChild(aditional_button)
+
         matiere_info.appendChild(nomMatiere);
         matiere_info.appendChild(inputPoidMatiere);
         matiereDiv.appendChild(matiere_info);
+        matiereDiv.appendChild(aditional_div)
         blockUEs.appendChild(matiereDiv);
 
         matiere.liste_types_evaluation.forEach((typeEvaluation, index) => {
             this.creerNoteCoef(matiereDiv.id, typeEvaluation, index);
         });
 
+        
+        //this.creerNoteCoef(matiereDiv.id,new TypeEvaluation('new_note',1,1),9)
         this.m = this.m + 1;
+
     }
 
     creerNoteCoef(matiereId, typeEvaluation, index) {
         const matiere = document.getElementById(matiereId);
+        const len = matiere.children.length
         for (let i = 0; i < typeEvaluation.nombre_de_notes; i++) {
             const divNoteCoef = document.createElement('div');
             divNoteCoef.className = 'note_coef';
@@ -330,7 +349,19 @@ export class Calculs {
 
             divNoteCoef.appendChild(inputNombre);
             divNoteCoef.appendChild(inputCoef);
-            matiere.appendChild(divNoteCoef);
+            if (len>0 && matiere.lastElementChild.classList.contains('resultat_matiere')){
+                matiere.insertBefore(divNoteCoef, matiere.children[len-2])
+                console.log('wesh')
+
+            }
+            else if (len > 0 && !(matiere.lastElementChild.classList.contains('resultat_matiere'))){
+                matiere.insertBefore(divNoteCoef, matiere.lastChild);
+                console.log('wosh')
+
+            }
+            else{
+                matiere.appendChild(divNoteCoef);
+            }
         }
     }
 }

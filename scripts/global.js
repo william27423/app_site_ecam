@@ -1,13 +1,24 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const dropdownButton = document.querySelector('.dropdown-button');
     const dropdown = document.querySelector('.dropdown');
     const dropdownItems = document.querySelectorAll('.dropdown-item'); // Sélection des éléments du dropdown
-
+    const aditional_buttons = document.querySelectorAll(".aditional_button")
 
     document.querySelector('.nom_UE').addEventListener('click', function() {
         alert('Vous avez cliqué sur le span!');
     });
     
+
+    aditional_buttons.forEach(aditional_button =>{
+        aditional_button.addEventListener('click', ()=>{
+            let matierediv = aditional_button.parentElement.parentElement;
+            console.log(matierediv)
+            console.log('ca marche')
+            app.creerNoteCoef(matierediv.id,new TypeEvaluation('new_note',1,1),1)
+        });
+    });
     // Afficher/cacher le dropdown lorsque le bouton est cliqué
     dropdownButton.addEventListener('click', function() {
         dropdown.classList.toggle('show');
