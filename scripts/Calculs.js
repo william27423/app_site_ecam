@@ -325,6 +325,7 @@ export class Calculs {
     creerNoteCoef(matiereId, typeEvaluation, index) {
         const matiere = document.getElementById(matiereId);
         const len = matiere.children.length
+        console.log(len)
         for (let i = 0; i < typeEvaluation.nombre_de_notes; i++) {
             const divNoteCoef = document.createElement('div');
             divNoteCoef.className = 'note_coef';
@@ -355,12 +356,13 @@ export class Calculs {
 
             }
             else if (len > 0 && !(matiere.lastElementChild.classList.contains('resultat_matiere'))){
-                matiere.insertBefore(divNoteCoef, matiere.lastChild);
+                matiere.insertBefore(divNoteCoef, matiere.children[len-1]);
                 console.log('wosh')
 
             }
             else{
                 matiere.appendChild(divNoteCoef);
+                console.log('dkndz')
             }
         }
     }

@@ -1,3 +1,5 @@
+import { Calculs } from './Calculs.js';
+import { TypeEvaluation } from './Classe.js';
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -5,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdown = document.querySelector('.dropdown');
     const dropdownItems = document.querySelectorAll('.dropdown-item'); // Sélection des éléments du dropdown
     const aditional_buttons = document.querySelectorAll(".aditional_button")
-
+    const app = new Calculs();
     document.querySelector('.nom_UE').addEventListener('click', function() {
         alert('Vous avez cliqué sur le span!');
     });
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let matierediv = aditional_button.parentElement.parentElement;
             console.log(matierediv)
             console.log('ca marche')
-            app.creerNoteCoef(matierediv.id,new TypeEvaluation('new_note',1,1),1)
+            app.creerNoteCoef(matierediv.id,new TypeEvaluation('nouvelle note',1,1),1)
         });
     });
     // Afficher/cacher le dropdown lorsque le bouton est cliqué
