@@ -1,4 +1,6 @@
 import { TypeEvaluation } from './Classe.js';
+import { saveData } from './app.js'; // Assurez-vous que le chemin est correct
+
 
 export class Calculs {
     constructor() {}
@@ -172,7 +174,6 @@ export class Calculs {
                     sommeDesPoids += poid;
                 }
             }
-            console.log(sommeDesPoids)
             let moyenneUE = sommemoyenne/sommeDesPoids;
             let blockid = `block${r}`;
             let block = document.getElementById(blockid);
@@ -325,7 +326,6 @@ export class Calculs {
     creerNoteCoef(matiereId, typeEvaluation, index) {
         const matiere = document.getElementById(matiereId);
         const len = matiere.children.length
-        console.log(len)
         for (let i = 0; i < typeEvaluation.nombre_de_notes; i++) {
             const divNoteCoef = document.createElement('div');
             divNoteCoef.className = 'note_coef';
@@ -348,21 +348,21 @@ export class Calculs {
             inputCoef.max = 10;
             inputCoef.value = typeEvaluation.coef;
 
+            inputNombre.addEventListener('input', saveData);
+            inputCoef.addEventListener('input', saveData);
+
             divNoteCoef.appendChild(inputNombre);
             divNoteCoef.appendChild(inputCoef);
             if (len>0 && matiere.lastElementChild.classList.contains('resultat_matiere')){
                 matiere.insertBefore(divNoteCoef, matiere.children[len-2])
-                console.log('wesh')
 
             }
             else if (len > 0 && !(matiere.lastElementChild.classList.contains('resultat_matiere'))){
                 matiere.insertBefore(divNoteCoef, matiere.children[len-1]);
-                console.log('wosh')
-
+                
             }
             else{
                 matiere.appendChild(divNoteCoef);
-                console.log('dkndz')
             }
         }
     }

@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     aditional_buttons.forEach(aditional_button =>{
         aditional_button.addEventListener('click', ()=>{
             let matierediv = aditional_button.parentElement.parentElement;
-            console.log(matierediv)
-            console.log('ca marche')
             app.creerNoteCoef(matierediv.id,new TypeEvaluation('nouvelle note',1,1),1)
         });
     });
