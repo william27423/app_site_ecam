@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v1 ';
+const CACHE_NAME = 'v2 ';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -6,13 +6,13 @@ const urlsToCache = [
     '/scripts/app.js',
     '/image/ecam_student.png'
 ];
-
 // Affichage pour vérifier le service worker est bien initialisé
 console.log('Service Worker: Initialisé');
 
 // Installation : mise en cache des ressources
 self.addEventListener('install', event => {
     console.log('Service Worker: Installation');
+    self.skipWaiting(); // Force l'activation immédiate
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {

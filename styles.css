@@ -28,6 +28,34 @@ img {
     height: auto;        /* Garde les proportions de l'image */
     margin: 1%;          /* Marge pour éviter qu'elle ne touche le bord de la page */
 }
+
+.accueilDiv{
+    justify-content: flex-start;
+    align-items: left; /* Centrer tout le contenu horizontalement */
+    width: 100%;          /* Largeur de l'image en pourcentage (modifiable) */
+
+}
+
+.accueil {
+        /* La place à droite de la page */
+    width: 10%;          /* Largeur de l'image en pourcentage (modifiable) */
+    height: auto;        /* Garde les proportions de l'image */
+    margin: 1%;
+    margin-left: 100px;          /* Marge pour éviter qu'elle ne touche le bord de la page */
+    padding: 10px ;      /* Réduit les marges intérieures */
+    text-align: center;
+    color: white;
+    border-color: #0c0c0c;
+    border-radius: 5%;  
+    background-color: #8ea0a0; /* Bleu clair */
+}
+
+.accueil:hover{
+    background-color: #1e7da6; /* Bleu légèrement plus foncé */
+}
+
+
+
 .container {
     display: flex;
     flex-direction: column;
@@ -156,7 +184,9 @@ input.coef {
     display: block;
 }
 
-.boutonCalcul:hover, .dropdown-button:hover {
+
+
+.boutonCalcul:hover, .dropdown-button:hover, .clear:hover {
     background-color: #1e47a6; /* Bleu légèrement plus foncé */
 }
 
@@ -252,7 +282,7 @@ input.coef {
 
 
 
-.boutonCalcul {
+.boutonCalcul, .clear {
     background-color: #3498db; /* Bleu clair */
     color: white;
     padding: 10px;
@@ -305,6 +335,11 @@ p {
         width: 15%;          /* Largeur de l'image en pourcentage (modifiable) */
         height: auto;        /* Garde les proportions de l'image */
         margin: 1%;          /* Marge pour éviter qu'elle ne touche le bord de la page */
+    }
+
+    .accueil{
+        margin-left: 2%;
+        width: 80px;
     }
     /* Promotion and UE Layout */
     .Promotion, .UE, .matiere {
@@ -377,6 +412,7 @@ p {
     }
     /* Dropdown Menu Styles */
     .dropdown {
+        margin-top: 10px;
         width : 60%;
         position: relative;
         display: inline-block;
@@ -471,12 +507,7 @@ p {
         display: block;
     }
 
-    /* Rest of your styles unchanged... */
-
-    /* General Button Styles */
     button {
-        background-color: #3498db; /* Bleu clair */
-        color: white;
         padding: 1%; /* Changement en pourcentage */
         border: none;
         border-radius: 5px;
@@ -486,6 +517,7 @@ p {
         max-width: 100%; /* Limite la largeur du bouton en pourcentage */
         margin-top: 1%; /* Changement en pourcentage */
     }
+
     .aditional_div{
         display: flex;
         justify-content: center;    
@@ -508,10 +540,8 @@ p {
     }
 
 
-    button:hover {
-        background-color: #1e47a6; /* Bleu légèrement plus foncé */
-    }
     .boutonCalcul{
+        
         width: 60%;
         padding: 15px; 
         margin-bottom: 10%;

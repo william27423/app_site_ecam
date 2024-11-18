@@ -1,5 +1,5 @@
 import { TypeEvaluation } from './Classe.js';
-import { saveData } from './app.js'; // Assurez-vous que le chemin est correct
+import { saveData, saveHtmlContent } from './app.js'; // Assurez-vous que le chemin est correct
 
 
 export class Calculs {
@@ -206,7 +206,7 @@ export class Calculs {
         container.innerHTML = ''; // Vider le conteneur existant
         const PromotionDiv = document.createElement('div');
         PromotionDiv.className = 'Promotion';
-        PromotionDiv.id = 'Promotion'; // Ajouter l'ID
+        PromotionDiv.id = Promotion.nom; // Ajouter l'ID
 
         const nomPromotion = document.createElement('span');
         nomPromotion.className = 'nom_Promotion';
@@ -230,7 +230,8 @@ export class Calculs {
     }
 
     setMatieres(id, UE, nb) {
-        const Promotion = document.getElementById('Promotion');
+
+        const Promotion = document.querySelector(".Promotion");
         const UEDiv = document.createElement('div');
         UEDiv.className = 'UE';
         if (nb == 1){
@@ -304,13 +305,18 @@ export class Calculs {
         aditional_button.className="aditional_button"
         aditional_button.id = `${this.m}`;
         aditional_button.textContent = "+"
-        aditional_button.addEventListener('click',() => this.creerNoteCoef(matiereDiv.id,new TypeEvaluation('nouvelle note',1,1),1));
         aditional_div.appendChild(aditional_button)
 
         matiere_info.appendChild(nomMatiere);
         matiere_info.appendChild(inputPoidMatiere);
         matiereDiv.appendChild(matiere_info);
-        matiereDiv.appendChild(aditional_div)
+        matiereDiv.appendChild(aditional_div);
+        aditional_button.addEventListener('click',() => {
+            this.creerNoteCoef(matiereDiv.id,new TypeEvaluation('nouvelle note',1,1),matiereDiv.children.length-2);
+            const len = matiereDiv.children.length;
+
+            saveHtmlContent(matiereDiv.children[len-2]);
+        });
         blockUEs.appendChild(matiereDiv);
 
         matiere.liste_types_evaluation.forEach((typeEvaluation, index) => {
@@ -325,14 +331,16 @@ export class Calculs {
 
     creerNoteCoef(matiereId, typeEvaluation, index) {
         const matiere = document.getElementById(matiereId);
-        const len = matiere.children.length
+        const Promotion = matiere.parentElement.parentElement.parentElement;
+        const Promotionid = Promotion.id;
+        const len = matiere.children.length;
         for (let i = 0; i < typeEvaluation.nombre_de_notes; i++) {
             const divNoteCoef = document.createElement('div');
             divNoteCoef.className = 'note_coef';
 
             const inputNombre = document.createElement('input');
             inputNombre.type = 'number';
-            inputNombre.id = `nombre_${matiereId}_${index}_${i}`; // Unique ID
+            inputNombre.id = `n${Promotionid}_${matiereId}_${index}_${i}`; // Unique ID
             inputNombre.className = 'note';
             inputNombre.placeholder = `note ${typeEvaluation.nom} ...`;
             inputNombre.min = 0;
@@ -341,18 +349,19 @@ export class Calculs {
 
             const inputCoef = document.createElement('input');
             inputCoef.type = 'number';
-            inputCoef.id = `coef_${matiereId}_${index}_${i}`; // Unique ID
+            inputCoef.id = `c${Promotionid}_${matiereId}_${index}_${i}`; // Unique ID
             inputCoef.className = 'coef';
             inputCoef.placeholder = 'coef';
             inputCoef.min = 0;
             inputCoef.max = 10;
             inputCoef.value = typeEvaluation.coef;
 
-            inputNombre.addEventListener('input', saveData);
-            inputCoef.addEventListener('input', saveData);
-
             divNoteCoef.appendChild(inputNombre);
             divNoteCoef.appendChild(inputCoef);
+
+            inputNombre.addEventListener('input', () => saveData(inputNombre,inputCoef));
+            inputCoef.addEventListener('input', () => saveData(inputNombre,inputCoef));
+
             if (len>0 && matiere.lastElementChild.classList.contains('resultat_matiere')){
                 matiere.insertBefore(divNoteCoef, matiere.children[len-2])
 

@@ -738,3 +738,5 @@ export const AM4 = new Promotion('AM4', [
         ]),
     ], 6),
 ]);
+
+export let liste = [AM3_1S,AM3_2S,AM4,ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S]

@@ -16,6 +16,9 @@
 
     <h1>Calculer sa moyenne</h1>
     <img src="/image/ecam_student.png" alt="logo_ecam">
+    <div class="accueilDiv">
+        <button class="accueil">accueil</button>
+    </div>
     <!-- Menu déroulant -->
     <div class="dropdown">
         <button class="dropdown-button" id="dropdown-button">Choisir une promotion <span class="arrow">▼</span></button>
@@ -35,7 +38,7 @@
     
     <!-- Champs de saisie pour les nombres et les coefficients -->
     <div class="container" id="container">
-        <div class="Promotion" id="Promotion">
+        <div class="Promotion" id="Exemple">
             <span class="nom_Promotion">Exemple</span>
             <div class="UE" id="UE0">
                 <div class="nom_UE-container">
@@ -73,6 +76,8 @@
     <p id="resultat"></p> 
     <!-- Bouton pour calculer la moyenne -->
     <button class="boutonCalcul" id="boutonCalcul">Calculer Moyenne</button>
+    <button class="clear">Clear</button>
+    
     <script type="module" src="scripts/app.js"></script>
     <script type="module" src="scripts/global.js"></script>
     <script type="module" src="scripts/main.js"></script>
