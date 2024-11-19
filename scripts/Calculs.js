@@ -8,7 +8,7 @@ export class Calculs {
     mettrefleche(boutonClasse){
         const dropdown_button = document.getElementById("dropdown-button");
 
-        dropdown_button.textContent = boutonClasse.textContent
+        dropdown_button.textContent = boutonClasse.textContent;
         const arrowSpan = document.createElement("span");
         arrowSpan.className = "arrow";
         arrowSpan.textContent = "▼";
@@ -51,7 +51,7 @@ export class Calculs {
 
         dropdown_button_spe.appendChild(arrowSpan);
         dropdown.appendChild(dropdown_button_spe);
-        body.insertBefore(dropdown, body.children[3]);
+        body.insertBefore(dropdown, body.children[4]);
     }
     enlever_dropdown_spe(){
         const dropdown_t = document.getElementById("dropdown-spe")
