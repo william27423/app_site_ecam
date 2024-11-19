@@ -115,6 +115,7 @@ function loadData() {
   }
 }
 
+
 function clear(){
   const storedData = JSON.parse(localStorage.getItem('appData'));
   let Promotionid = document.querySelector(".Promotion").id;
@@ -122,25 +123,36 @@ function clear(){
   const savedHtml = storedData ? storedData.savedHtml : [];
   console.log(storedData);
   console.log(savedHtml);
-
+  const partiel_list_n = []
   savedNotes.forEach((item, index) =>{
     const note = document.getElementById(item.ids);
     if (note) {
-      note.input = undefined;
-      savedNotes.splice(index, 1);
+      console.log(note)
+      console.log("Après :", note.input);
+      note.value = '';
+      console.log("Après :", note.input);
+
+
+    }
+    else{
+      partiel_list_n.push(item);
     }
   });
+  const partiel_list = []
   savedHtml.forEach((item, index) =>{
     console.log(item)
     if (item.Promotionid == Promotionid) {
       console.log(item.htmlid)
       const htmldiv = document.getElementById(item.htmlid).parentElement;
       htmldiv.remove();
-      savedHtml.splice(index, 1);
+    }
+    else{
+      partiel_list.push(item)
     }
   });
-  storedData.notes = savedNotes;
-  storedData.savedHtml = savedHtml;
+  console.log(partiel_list_n)
+  storedData.notes = partiel_list_n;
+  storedData.savedHtml = partiel_list;
   localStorage.setItem('appData', JSON.stringify(storedData));
   console.log("Contenu HTML clear :", Promotionid);
 
@@ -173,7 +185,7 @@ document.querySelectorAll('.note, .coef').forEach((input) => {
 
 const buttonClear = document.querySelector(".clear")
 buttonClear.addEventListener('click', ()=>{
-  loadData();
+  clear();
 });
 
 // Charger les données lors du chargement de la page
