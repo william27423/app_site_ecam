@@ -1,4 +1,5 @@
-
+import { Calculs } from './Calculs.js';
+import { ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S,AM3_1S,AM3_2S,AM4} from './Instance.js';
 // Enregistrement du Service Worker pour gérer le cache et la disponibilité hors ligne
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -17,7 +18,7 @@ export function saveData(note, coef) {
   console.log('Saving data: mode');
 
   // Récupérer les données existantes depuis localStorage
-  let storedData = JSON.parse(localStorage.getItem('appData')) || { notes: [], savedHtml: [] };
+  let storedData = JSON.parse(localStorage.getItem('appData')) || { notes: [], savedHtml: [], promoHtml: [] };
   const notes = storedData.notes;
 
   const coefV = coef.value;
@@ -48,11 +49,12 @@ export function saveData(note, coef) {
 
   // Mettre à jour la partie notes de `storedData` et sauvegarder
   storedData.notes = notes;
+  console.log('store data after save note', storedData)
   localStorage.setItem('appData', JSON.stringify(storedData));
 }
 
 export function saveHtmlContent(htmldiv) {
-  let storedData = JSON.parse(localStorage.getItem('appData')) || { notes: [], savedHtml: [] };
+  let storedData = JSON.parse(localStorage.getItem('appData')) || { notes: [], savedHtml: [], promoHtml: [] };
   const savedHtml = storedData.savedHtml;
 
   const Promotion = htmldiv.parentElement.parentElement.parentElement.parentElement;
@@ -69,6 +71,38 @@ export function saveHtmlContent(htmldiv) {
   storedData.savedHtml = savedHtml;
   localStorage.setItem('appData', JSON.stringify(storedData));
   console.log("Contenu HTML sauvegardé :", savedHtml);
+}
+
+export function saveHtmlPromo(indexage, dropdown_item) {
+  let storedData = JSON.parse(localStorage.getItem('appData')) || { notes: [], savedHtml: [], promoHtml: [] };
+  let promoHtml = [];
+  if (indexage != -1){
+     promoHtml = [indexage, dropdown_item];
+  }
+  storedData.promoHtml = promoHtml;
+  localStorage.setItem('appData', JSON.stringify(storedData));
+  console.log("Contenu HTML promo :", promoHtml);
+  console.log(storedData);
+
+}
+
+function loadHtmlPromo() {
+  const storedData = JSON.parse(localStorage.getItem('appData'));
+  const promoHtml = storedData ? storedData.promoHtml : [];
+  const index = promoHtml[0];
+  const dropdown_item = promoHtml[1];
+  console.log(promoHtml);
+  const app = new Calculs();
+  let liste = [AM3_1S,AM3_2S,AM4,ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S]
+
+
+  if (promoHtml.length > 0){
+    console.log(index)
+    app.setUE(liste[index]);
+    app.mettrefleche(dropdown_item);
+
+
+  }
 }
 
 function loadHtmlContent() {
@@ -190,6 +224,7 @@ buttonClear.addEventListener('click', ()=>{
 
 // Charger les données lors du chargement de la page
 window.addEventListener('load', ()=>{
+  loadHtmlPromo();
   loadHtmlContent();
   loadData();
 });

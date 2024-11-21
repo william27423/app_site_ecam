@@ -7,8 +7,9 @@ export class Calculs {
 
     mettrefleche(boutonClasse){
         const dropdown_button = document.getElementById("dropdown-button");
+        const textContent = boutonClasse.textContent ? boutonClasse.textContent : boutonClasse;
 
-        dropdown_button.textContent = boutonClasse.textContent;
+        dropdown_button.textContent = textContent;
         const arrowSpan = document.createElement("span");
         arrowSpan.className = "arrow";
         arrowSpan.textContent = "▼";
@@ -339,7 +340,7 @@ export class Calculs {
             divNoteCoef.className = 'note_coef';
 
             const inputNombre = document.createElement('input');
-            inputNombre.type = 'number';
+            //inputNombre.type = 'number';
             inputNombre.id = `n${Promotionid}_${matiereId}_${index}_${i}`; // Unique ID
             inputNombre.className = 'note';
             inputNombre.placeholder = `note ${typeEvaluation.nom} ...`;
@@ -348,7 +349,7 @@ export class Calculs {
             inputNombre.step = 0.5;
 
             const inputCoef = document.createElement('input');
-            inputCoef.type = 'number';
+            //inputCoef.type = 'number';
             inputCoef.id = `c${Promotionid}_${matiereId}_${index}_${i}`; // Unique ID
             inputCoef.className = 'coef';
             inputCoef.placeholder = 'coef';
@@ -374,5 +375,121 @@ export class Calculs {
                 matiere.appendChild(divNoteCoef);
             }
         }
+    }
+
+    createacceuil() {
+        const dropdownSpe = document.getElementById("dropdown-spe");
+        if (dropdownSpe){
+            dropdownSpe.remove()
+        }
+
+        const container = document.getElementById("container")
+        console.log(container)
+        container.innerHTML = ''; // Vider le conteneur existant
+        console.log(container)
+
+        const promotionDiv = document.createElement("div");
+        promotionDiv.className = "Promotion";
+        promotionDiv.id = "Exemple";
+
+        const promotionNameSpan = document.createElement("span");
+        promotionNameSpan.className = "nom_Promotion";
+        promotionNameSpan.textContent = "Exemple";
+        promotionDiv.appendChild(promotionNameSpan);
+
+        const ueDiv = document.createElement("div");
+        ueDiv.className = "UE";
+        ueDiv.id = "UE0";
+
+        const ueNameContainerDiv = document.createElement("div");
+        ueNameContainerDiv.className = "nom_UE-container";
+
+        const ueNameSpan = document.createElement("span");
+        ueNameSpan.className = "nom_UE";
+        ueNameSpan.textContent = "Nom de l'UE";
+        ueNameContainerDiv.appendChild(ueNameSpan);
+
+        const toggleButton = document.createElement("button");
+        toggleButton.className = "toggle-button";
+        toggleButton.id = "toggleUE0";
+        toggleButton.innerHTML = "&#9654;"; // Flèche
+        ueNameContainerDiv.appendChild(toggleButton);
+
+        ueDiv.appendChild(ueNameContainerDiv);
+
+        const blockDiv = document.createElement("div");
+        blockDiv.className = "bloc";
+        blockDiv.id = "block-1";
+
+        const matiereDiv = document.createElement("div");
+        matiereDiv.className = "matiere";
+        matiereDiv.id = "matiere0";
+
+        const matiereInfoDiv = document.createElement("div");
+        matiereInfoDiv.className = "matiere_info";
+
+        const matiereNameSpan = document.createElement("span");
+        matiereNameSpan.className = "nom_matiere";
+        matiereNameSpan.textContent = "Nom de l'EC";
+        matiereInfoDiv.appendChild(matiereNameSpan);
+
+        const poidSpan = document.createElement("span");
+        poidSpan.className = "poid";
+        poidSpan.setAttribute("value", "1");
+        poidSpan.textContent = "pourcentage de l'UE: 100%";
+        matiereInfoDiv.appendChild(poidSpan);
+
+        matiereDiv.appendChild(matiereInfoDiv);
+
+        // Fonction pour créer un couple note/coef
+        function createNoteCoef(id) {
+            const noteCoefDiv = document.createElement("div");
+            noteCoefDiv.className = "note_coef";
+
+            const noteInput = document.createElement("input");
+            noteInput.type = "number";
+            noteInput.id = `nombre${id}`;
+            noteInput.className = "note";
+            noteInput.placeholder = "Entrez le nombre";
+            noteInput.min = "0";
+            noteInput.max = "20";
+            noteInput.step = "0.5";
+
+            const coefInput = document.createElement("input");
+            coefInput.type = "number";
+            coefInput.id = `coef${id}`;
+            coefInput.className = "coef";
+            coefInput.placeholder = "coef";
+            coefInput.min = "0";
+            coefInput.max = "10";
+            coefInput.value = "1";
+
+            noteCoefDiv.appendChild(noteInput);
+            noteCoefDiv.appendChild(coefInput);
+
+            return noteCoefDiv;
+        }
+
+        // Ajouter plusieurs couples note/coef
+        for (let i = 0; i < 3; i++) {
+            matiereDiv.appendChild(createNoteCoef(i));
+        }
+
+        const additionalDiv = document.createElement("div");
+        additionalDiv.className = "aditional_div";
+
+        const additionalButton = document.createElement("button");
+        additionalButton.className = "aditional_button";
+        additionalButton.id = "aditional_button-1";
+        additionalButton.textContent = "+";
+
+        additionalDiv.appendChild(additionalButton);
+        matiereDiv.appendChild(additionalDiv);
+
+        blockDiv.appendChild(matiereDiv);
+        ueDiv.appendChild(blockDiv);
+        promotionDiv.appendChild(ueDiv);
+        container.appendChild(promotionDiv)
+
     }
 }
