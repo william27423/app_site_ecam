@@ -607,6 +607,105 @@ export const AM3_2S = new Promotion('AM3', [
     ], 4),
 ]);
 
+export const ENG4_1S = new Promotion('ENG4_1S tronc commun', [
+    new UE('Society, Management & Entrepreneurship S7', [
+        new Matiere('Society, Management & Entrepreneurship Final Project 1', 1.0, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 3),
+    new UE('Systems Engineering', [
+        new Matiere('Electrical Machines & Drives', 1.0, [
+            new TypeEvaluation('CRTP', 1.0, 1),
+            new TypeEvaluation('DS', 2.333, 1),
+        ]),
+    ], 1),
+    new UE('Applied Engineering Internship (S6)', [
+        new Matiere('Applied Engineering Internshiporal Examinal', 1.0, [
+            new TypeEvaluation('ORAL', 1.0, 1),
+            new TypeEvaluation('CRP', 1.0, 1),
+            new TypeEvaluation('CRPENTREPRISE', 2.0, 1),
+        ]),
+    ], 3),
+    new UE('Innovation Project S7', [
+        new Matiere('IP Use rs Research', 0.2, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('IE', 4.0, 1),
+        ]),
+        new Matiere('IP Ideati on', 0.15, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('iE', 4.0, 1),
+        ]),
+        new Matiere('IP  Marketing', 0.2, [
+            new TypeEvaluation('IE', 2.5, 1),
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+        new Matiere('IP Requirements', 0.25, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('IE', 4.0, 1),
+        ]),
+        new Matiere('IP Project Management Review', 0.2, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('ORAL', 4.0, 1),
+        ]),
+    ], ),
+],[
+    new UE('Robotics and  Automation E ngi neering S7', [
+        new Matiere('Control Theory 2a (Digital Control Systems)', 0.2, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('DS', 2.5, 1),
+            new TypeEvaluation('ORTP', 1.5, 1),
+        ]),
+        new Matiere('Control Theory 2b (Multivariable Control Systems]', 0.15, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('DS', 2.5, 1),
+            new TypeEvaluation('RTP', 1.5, 1),
+        ]),
+        new Matiere('Advanced Robotics', 0.35, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('DS', 1.333, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+        new Matiere('1T  &  Roboties Labs', 0.3, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 12),
+    new UE('1ndustri al Engineering &.', [
+        new Matiere('Manuf acturi ng  Digital Transformation', 0.3, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('CAP', 2.0, 1),
+            new TypeEvaluation('ORAL', 2.0, 1),
+        ]),
+        new Matiere('The Blue Connecti on', 0.3, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+        new Matiere('Global Supply Chain and  Information System', 0.4, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('CAP', 1.0, 1),
+            new TypeEvaluation('Ds', 3.0, 1),
+        ]),
+    ], 12),
+    new UE('Mechanical Engineering S7                              ', [
+        new Matiere('Computati onal FIui d Oynamies', 0.2, [
+            new TypeEvaluation('os', 1.0, 1),
+            new TypeEvaluation('CRTP', 1.5, 1),
+        ]),
+        new Matiere('Compressible Flows and Propulsion Syst', 0.35, [
+            new TypeEvaluation('os', 1.0, 1),
+            new TypeEvaluation('os', 1.0, 1),
+        ]),
+        new Matiere('Materials 4 (Polymers)', 0.2, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('CRTP', 1.25, 1),
+            new TypeEvaluation('os', 2.75, 1),
+        ]),
+        new Matiere('Advanced Vibrations', 0.25, [
+            new TypeEvaluation('IE', 1.0, 1),
+            new TypeEvaluation('os', 11.0, 1),
+            new TypeEvaluation('CRTP', 8.0, 1),
+        ]),
+    ], 12),
+]);
+
 export const AM4 = new Promotion('AM4', [
     new UE('DYNAMIQUE DES STRUCTURES', [
         new Matiere('Mécanique - Vibrations', 1.0, [

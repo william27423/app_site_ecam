@@ -1,5 +1,5 @@
 import { Calculs } from './Calculs.js';
-import { ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S,AM3_1S,AM3_2S,AM4} from './Instance.js';
+import { ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S,AM3_1S,AM3_2S,AM4,ENG4_1S} from './Instance.js';
 // Enregistrement du Service Worker pour gérer le cache et la disponibilité hors ligne
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -93,7 +93,7 @@ function loadHtmlPromo() {
   const dropdown_item = promoHtml[1];
   console.log(promoHtml);
   const app = new Calculs();
-  let liste = [AM3_1S,AM3_2S,AM4,ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S]
+  let liste = [AM3_1S,AM3_2S,AM4,ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S, ENG4_1S]
 
 
   if (promoHtml.length > 0){
