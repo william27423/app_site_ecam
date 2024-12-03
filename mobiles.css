@@ -5,7 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrer tout le contenu horizontalement */
-    justify-content: left; /* Centrer tout le contenu verticalement */
+    justify-content: center; /* Centrer tout le contenu verticalement */
     min-height: 100vh;
     margin: 0 auto;          /* Centre l'élément horizontalement */
 
@@ -37,10 +37,10 @@ img {
 
 .accueil {
         /* La place à droite de la page */
-    width: 10%;          /* Largeur de l'image en pourcentage (modifiable) */
+    width: 80px;          /* Largeur de l'image en pourcentage (modifiable) */
     height: auto;        /* Garde les proportions de l'image */
     margin: 1%;
-    margin-left: 100px;          /* Marge pour éviter qu'elle ne touche le bord de la page */
+    margin-left: 2%;
     padding: 10px ;      /* Réduit les marges intérieures */
     text-align: center;
     color: white;
@@ -54,93 +54,61 @@ img {
 }
 
 
-
-.container {
-    display: flex;
-    justify-content: left; /* Centre horizontalement */
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-}
-
-.Promotion{
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centre horizontalement */
-
-    align-items: center;
-}
-
-.UE{
-    width: 100%;
-    margin-top: 15px;
-    display: block;
-}
-
-.block {
-    width: 100%;
-    display: none;
-
-}
-
-.block.show {
-    display: inline-block;
-
-    
-}
 /* Promotion and UE Layout */
-.matiere {
-    width: 400px;
-    margin-top: 15px;
+.Promotion, .UE, .matiere {
+    width: 100%; /* Limiter la largeur des sections à 100% */
+    max-width: 550px; /* Limiter la largeur maximale pour les grandes écrans */
+    margin-top: 6%; /* Changement de margin-bottom en pourcentage */
 }
 
 .nom_Promotion{
-    width: 100%;
     font-size: 30px;
-    margin-top: 50px;
-    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 50px;
 
 }
+
 /* Matière Info */
 .matiere_info {
     display: flex;
     justify-content: space-between; /* Séparer le nom de la matière et le pourcentage */
     align-items: center; /* Alignement vertical centré */
-    margin-bottom: 5px;
+    margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
 }
 
 .nom_matiere {
-    margin-left: 10px;
+    margin-left: 2%; /* Changement en pourcentage */
     font-style: italic;
     text-decoration: underline;
     background-color: #3498db; /* Bleu clair */
     color: white;
-    padding: 2px 5px;
+    padding: 1%; /* Changement en pourcentage */
     flex: 1; /* Prend tout l'espace restant */
 }
 
 .poid {
-    font-size: 12px; 
-    margin-left: 10px;
+    font-size: 0.8rem; /* Remplace 12px par une taille relative */
+    margin-left: 0%; /* Changement en pourcentage */
     text-align: right; /* Alignement à droite */
-    width: 20%; /* Taille du champ pourcentage */
+    width: 18%; /* Taille du champ pourcentage */
 }
 
 /* Layout for Note and Coefficient */
 .note_coef {
     display: grid;
-    grid-template-columns: 1fr 60px; /* Deux colonnes : une pour la note, une pour le coefficient */
-    grid-gap: 10px; /* Espacement entre les colonnes */
+
+    grid-template-columns: 1fr 15%; /* Deux colonnes : une pour la note, une pour le coefficient */
+    grid-gap: 2%; /* Espacement entre les colonnes en pourcentage */
     align-items: center; /* Aligner verticalement les éléments */
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
 }
 
 /* Input Fields */
+
 input {
-    padding: 8px;
-    font-size: 14px;
+    padding: 4%; /* Changement en pourcentage */
+    font-size: 1rem; /* Remplace 14px par une taille relative */
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 100%;
@@ -151,82 +119,60 @@ input.note {
     width: 100%; /* Prend toute la largeur disponible dans la grille */
 }
 
+
 input.coef {
-    width: 60px; /* Largeur fixe pour les coefficients */
-    padding: 8px;
-    font-size: 14px;
+    width: 100%; /* Largeur fixe pour les coefficients, en pourcentage */
+    padding: 21%; /* Changement en pourcentage */
+    font-size: 1rem; /* Remplace 14px par une taille relative */
     border-radius: 5px;
     background-color: #d9f0fc; /* Bleu clair pour le fond */
     border: 1px solid #2c3e50; /* Bleu foncé pour la bordure */
     font-weight: bold;
+    
 }
-
-.aditional_button{
-    display: flex;
-    align-items: center; /* Alignement vertical centré */
-}
-
 /* Dropdown Menu Styles */
-.dropdown{
-    width : 25%;
-
+.dropdown {
+    margin-top: 10px;
+    width : 60%;
     position: relative;
     display: inline-block;
+    
 }
 
 .dropdown-button {
+    
     background-color: #43517d; /* Bleu clair */
     color: white;
-    padding: 10px;
-    font-size: 16px;
+    padding: 4%; /* Changement en pourcentage */
+    font-size: 1rem; /* Remplace 16px par une taille relative */
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    width: 100%;
-    margin-top: 20px;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 160px;
+    min-width: 100%; /* Ajustement en pourcentage */
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 1;
-    width: 100%;
-
 }
 
-.dropdown-content button{
+.dropdown-content a {
     color: black;
-    padding: 12px;
+    padding: 2%; /* Changement en pourcentage */
     text-decoration: none;
     display: block;
 }
 
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
 
 .dropdown.show .dropdown-content {
     display: block;
-}
-
-
-
-.boutonCalcul:hover, .dropdown-button:hover, .clear:hover {
-    background-color: #1e47a6; /* Bleu légèrement plus foncé */
-}
-
-.dropdown-item{
-    background-color: white; /* Bleu clair */
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    display: block;
-    
-}
-.dropdown-item:hover {
-    background-color: #a4aab9; /* Bleu légèrement plus foncé */
 }
 
 /* Alignement du titre de l'UE et de la flèche */
@@ -234,42 +180,33 @@ input.coef {
     display: flex;
     align-items: center; /* Centrer verticalement la flèche et le texte */
     justify-content: flex-start;
-    /* Aligner la flèche et le texte vers la gauche */
-    margin-bottom: 15px; /* Espacement en dessous du conteneur */
-    padding-right: 50px; /* Valeur du padding à droite */
-
+    padding: 0%; /* Changement en pourcentage */
+    
+    margin-bottom: 5%; /* Changement de margin-bottom en pourcentage */
 }
 
 .nom_UE {
-    font-size: 20px;   /* Taille du texte */
+    font-size: 1.25rem; /* Remplace 20px par une taille relative */
     color: #1e47a6; /* Bleu clair */
     font-weight: bold; /* Texte en gras */
-    margin-right: 10px; /* Espacement entre le texte et la flèche */
+    margin-right: 2%; /* Changement en pourcentage */
     text-align: left; /* Aligner à gauche */
-
-}
-#Colorations{
-    color: #6f88e1;
 }
 
 /* Flèche (toggle-button) à côté du texte */
 .toggle-button {
-    background-color: #ab9b9b2e; /* Bleu clair */
-    color: white;
+    background-color: #ab9b9b2e;
     border: none;
-    border-radius: 30%; /* Cercle */
     cursor: pointer;
-    font-size: 10px;
-    width: 15px; /* Taille du carré */
-    height: 15px;
+    font-size: 0.625rem; /* Remplace 10px par une taille relative */
+    border-radius: 30%; /* Arrondit les coins du bouton pour en faire un cercle */
+    transform: rotate(0deg); /* Par défaut, flèche droite */
+    transition: transform 0.3s ease-in-out;
+    width: 3vh; /* Ajustement en pourcentage */
+    height: 3vh; /* Ajustement en pourcentage */
     display: flex;
     justify-content: center; /* Centrer horizontalement */
     align-items: center; /* Centrer verticalement */
-    transition: transform 0.3s ease-in-out;
-    margin-left: 0;
-    margin-top: 0;
-    padding: 10px;
-
 }
 
 .toggle-button:hover {
@@ -282,68 +219,104 @@ input.coef {
 }
 
 /* Masquer la matière par défaut */
+.block {
+    display: none;
+}
 
+.block.show {
+    display: block;
+}
 
-/* Rest of your styles unchanged... */
+button {
+    padding: 1%; /* Changement en pourcentage */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; /* Remplace 16px par une taille relative */
+    width: 100%;
+    max-width: 100%; /* Limite la largeur du bouton en pourcentage */
+    margin-top: 1%; /* Changement en pourcentage */
+}
+
 .aditional_div{
     display: flex;
-    justify-content: center; /* Centre le bouton horizontalement */
+    justify-content: center;    
 }
 
 .aditional_button{
-    padding: 1px ;      /* Réduit les marges intérieures */
-    height: 15px;
-    border-color: #e8eaf0;
+    padding: 10px ;      /* Réduit les marges intérieures */
+    height: auto;
+    border-color: #0c0c0c;
     border-radius: 25%;
-    background-color: #e8eaf0; /* Bleu clair */
+    background-color: #cdcfd5; /* Bleu clair */
     font-size: 16px;
+    width: 10%; 
+    justify-content: center;
+
 }
 /* General Button Styles */
 .aditional_button:hover {
-    background-color: #cdcfd5;
+    background-color: #88898b;
 }
-
-
 
 .boutonCalcul, .clear {
     background-color: #3498db; /* Bleu clair */
     color: white;
-    padding: 10px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    width: 100%;
+    width: 60%;
     max-width: 300px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10%;
+}
+
+.boutonCalcul:hover, .dropdown-button:hover, .clear:hover {
+    background-color: #1e47a6; /* Bleu légèrement plus foncé */
+}
+
+.dropdown-item{
+    background-color: white; /* Bleu clair */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    padding: 20px;
+
+    
+}
+.dropdown-item:hover {
+    background-color: #a4aab9; /* Bleu légèrement plus foncé */
 }
 
 
 /* Styles for the Results */
 .resultat_matiere {
-    font-size: 14px;
+    font-size: 1rem; /* Remplace 14px par une taille relative */
     color: #555; 
     font-weight: bolder;
-    margin-top: 10px;
+    margin-top: 2%; /* Changement en pourcentage */
     display: block;
 }
 
 .resultat_UE {
-    font-size: 15px; 
+    font-size: 1rem; /* Remplace 15px par une taille relative */
     color: #1E90FF; 
     font-weight: bold; 
     background-color: #f0f8ff; 
-    padding: 10px;
+    padding: 2%; /* Changement en pourcentage */
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 2%; /* Changement en pourcentage */
     display: block;
     text-align: center;
 }
 
 p {
-    font-size: 18px;
+    font-size: 1.125rem; /* Remplace 18px par une taille relative */
     color: #333;
-    margin-top: 20px;
-    text-align: center;
+    margin-top: 3%; /* Changement en pourcentage */
+    text-align: center;
 }
