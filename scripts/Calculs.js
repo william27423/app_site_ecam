@@ -118,12 +118,12 @@ export class Calculs {
     }
 
     calculerMoyenne() {
-        let UEs = document.querySelectorAll(".UE");
+        let UEs = document.querySelectorAll(".c-UEname");
         this.k = 0;
         for (let r = 0; r < UEs.length; r++) {
             let sommemoyenne = 0;   
             let sommeDesPoids = 0;
-            let matieres = UEs[r].querySelectorAll(".matiere");
+            let matieres = UEs[r].querySelectorAll(".c-matiere");
             for (let i = 0; i < matieres.length; i++) {
                 let poid = parseFloat(matieres[i].querySelector(".poid").value);
                 if (!poid){
@@ -148,16 +148,14 @@ export class Calculs {
 
                 let moyenne = sommeNotes / sommeCoefficients;
 
-                let matiereId = `matiere${this.k}`;
                 this.k = this.k + 1;
-                const matiere = document.getElementById(matiereId);
-                let matiereMoyenneSpan = matiere.querySelector(".resultat_matiere");
+                let matiereMoyenneSpan = matieres[i].querySelector(".resultat_matiere");
 
                 if (!matiereMoyenneSpan) {
                     if (!isNaN(moyenne.toFixed(2))) {
                         matiereMoyenneSpan = document.createElement("span");
                         matiereMoyenneSpan.className = "resultat_matiere";
-                        matiere.appendChild(matiereMoyenneSpan);
+                        matieres[i].appendChild(matiereMoyenneSpan);
                         matiereMoyenneSpan.textContent = "Moyenne EC: " + moyenne.toFixed(2);
                     }
                 }
@@ -176,27 +174,44 @@ export class Calculs {
                 }
             }
             let moyenneUE = sommemoyenne/sommeDesPoids;
-            let blockid = `block${r}`;
-            let block = document.getElementById(blockid);
-            if (!block) {
-                block = document.getElementById('block-1')
-            }
-            let UEMoyenneSpan = block.querySelector(".resultat_UE");
-            if (!UEMoyenneSpan) {
-                if (moyenneUE.toFixed(2) != 0.00) {
-                    UEMoyenneSpan = document.createElement("span");
+            const container1 = document.getElementById('container1')
+            let block_note = container1.querySelector(".block_note");
+
+            if (!block_note) {
+                console.log('1111')
+                if (!isNaN(moyenneUE.toFixed(2))) {
+
+                    block_note = document.createElement('div');
+                    block_note.className = 'block_note';
+
+                    let UEMoyenneSpan = document.createElement("span");
                     UEMoyenneSpan.className = "resultat_UE";
-                    UEMoyenneSpan.id = `resultat_UE${r}`
-                    block.appendChild(UEMoyenneSpan);
-                    UEMoyenneSpan.textContent = "Moyenne UE: " + moyenneUE.toFixed(2);
+                    UEMoyenneSpan.id = `resultat_UE${r}`;
+                    block_note.appendChild(UEMoyenneSpan);
+                    container1.appendChild(block_note);
+                    const UEname = UEs[r].id;
+
+                    UEMoyenneSpan.textContent = UEname + moyenneUE.toFixed(2);
+                    console.log('2222')
+
                 }
+
             }
             else{
+                console.log('3333')
+
                 if (!isNaN(moyenneUE.toFixed(2))){
-                    UEMoyenneSpan.textContent = "Moyenne UE: " + moyenneUE.toFixed(2);
-                }
-                else{
-                    UEMoyenneSpan.remove()
+                    console.log('4444')
+
+                    let UEMoyenneSpan = document.createElement("span");
+                    UEMoyenneSpan.className = "resultat_UE";
+                    UEMoyenneSpan.id = `resultat_UE${r}`;
+
+                    block_note.appendChild(UEMoyenneSpan);
+
+                    const UEname = UEs[r].id;
+
+                    UEMoyenneSpan.textContent = UEname + moyenneUE.toFixed(2);
                 }
             }
         }
@@ -286,18 +301,13 @@ export class Calculs {
 
                 const UEsn = document.querySelectorAll('.c-UEname');
                 UEsn.forEach(UEn => UEn.remove());
-                
-                const matieresn = document.querySelectorAll('.c-Matierename');
-                matieresn.forEach(matieren => matieren.remove());
-
-                const notes = document.querySelectorAll('.note_coef');
-                notes.forEach(note => note.remove());
 
                 const c_UEname = document.createElement('span');
                 c_UEname.className = 'c-UEname';
+                c_UEname.id = UE.nom;
                 c_UEname.textContent = `UE: ${UE.nom}`;
 
-                container1.appendChild(c_UEname)
+                container1.insertBefore(c_UEname, container1.lastChild)
 
 
                 UE.liste_matieres.forEach((matiere, index) => {
@@ -310,7 +320,7 @@ export class Calculs {
 
     setMatieres(UEid, matiere) {
 
-        const container1 = document.getElementById("container1");
+        const UEname = document.querySelector(".c-UEname");
 
         const block_mat = document.querySelector('.blockmatiere');
         const matierediv = document.createElement('div');
@@ -320,6 +330,8 @@ export class Calculs {
         const matiere_info = document.createElement('button');
         matiere_info.className = 'nom_matiere-container';
         matiere_info.textContent = `EC: ${matiere.nom}`;
+
+        
 
         
         matierediv.appendChild(matiere_info);
@@ -333,14 +345,24 @@ export class Calculs {
                 
                 matiere_info.style.backgroundColor = '#525cb8'; 
 
-                
+                const c_matierediv = document.createElement('div');
+                c_matierediv.className = 'c-matiere';
+                c_matierediv.id = matiere.nom;
 
                 const c_Matierename = document.createElement('span');
                 c_Matierename.className = 'c-Matierename';
-                c_Matierename.id = matiere.nom
                 c_Matierename.textContent = `EC: ${matiere.nom}`;
 
-                container1.appendChild(c_Matierename)
+                const inputPoidMatiere = document.createElement('span');
+                inputPoidMatiere.className = 'poid';
+                inputPoidMatiere.value = matiere.poid_matiere
+                inputPoidMatiere.textContent = `pourcentage de l'UE: ${matiere.poid_matiere * 100}%`;
+
+                c_matierediv.appendChild(c_Matierename)
+                c_matierediv.appendChild(inputPoidMatiere)
+
+                UEname.appendChild(c_matierediv)
+
 
 
                 matiere.liste_types_evaluation.forEach((typeEvaluation, index) => {
@@ -350,23 +372,18 @@ export class Calculs {
             else{
                 matiere_info.style.backgroundColor = ''; 
 
-                const matieresn = document.querySelectorAll('.c-Matierename');
+                const matieresn = document.querySelectorAll('.c-matiere');
                 matieresn.forEach(matieren => {
                     if (matieren.id == matiere.nom)
                     matieren.remove()
                 });
 
-                const notes = document.querySelectorAll('.note_coef');
-                notes.forEach(note => note.remove());
             }
         });
 
 
 
-        /*const inputPoidMatiere = document.createElement('span');
-        inputPoidMatiere.className = 'poid';
-        inputPoidMatiere.value = matiere.poid_matiere
-        inputPoidMatiere.textContent = `pourcentage de l'UE: ${matiere.poid_matiere * 100}%`;
+        /*
 
         const aditional_div = document.createElement('div')
         aditional_div.className = "aditional_div";
