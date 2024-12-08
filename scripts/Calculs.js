@@ -103,12 +103,12 @@ export class Calculs {
                 const Coloration_nom = document.querySelector("#Coloration .nom_UE")
                 dropdown.classList.remove('show');
                 if (Coloration_nom == null) {
-                    this.setMatieres(UEs.length, liste_spe[index], 1);
+                    this.setUE(UEs.length, liste_spe[index], 1);
                     this.mettreflecheColoration(item)
                 }
                 else if ((Coloration_nom != null) && !(Coloration_nom.textContent.includes(liste_spe[index].nom))){
                     Coloration.remove()
-                    this.setMatieres(UEs.length, liste_spe[index], 1);
+                    this.setUE(UEs.length, liste_spe[index], 1);
                     this.mettreflecheColoration(item)
 
                 }
@@ -202,7 +202,7 @@ export class Calculs {
         }
     }
 
-    setUE(Promotion) {
+    setPromotion(Promotion) {
         const container = document.getElementById('container');
         container.innerHTML = ''; // Vider le conteneur existant
         const PromotionDiv = document.createElement('div');
@@ -213,12 +213,23 @@ export class Calculs {
         nomPromotion.className = 'nom_Promotion';
         nomPromotion.textContent = Promotion.nom;
 
+        const blockmatiere = document.createElement("div")
+        blockmatiere.className = "blockmatiere"
+
+        const nomMatiere = document.createElement('span');
+        nomMatiere.className = 'nom_Matiere';
+        nomMatiere.textContent = "Liste de matieres:"
+
+
         this.m = 0;
         PromotionDiv.appendChild(nomPromotion);
+        blockmatiere.appendChild(nomMatiere);
         container.appendChild(PromotionDiv);
+        container.appendChild(blockmatiere);
+
 
         Promotion.liste_UE.forEach((UE, index) => {
-            this.setMatieres(index, UE, 0);
+            this.setUE(index, UE, 0);
         });
         if (Promotion.liste_Spe != undefined){
             this.ajouter_dropdown_spe();
@@ -230,8 +241,9 @@ export class Calculs {
         }
     }
 
-    setMatieres(id, UE, nb) {
+    setUE(id, UE, nb) {
 
+        const container1 = document.getElementById("container1");
         const Promotion = document.querySelector(".Promotion");
         const UEDiv = document.createElement('div');
         UEDiv.className = 'UE';
@@ -242,59 +254,116 @@ export class Calculs {
             UEDiv.id = `UE${id}`; // Ajouter l'ID
 
         }
-        const UEinfo = document.createElement('div');
+        const UEinfo = document.createElement('button');
         UEinfo.className = 'nom_UE-container';
-        const blockUE = document.createElement('div');
-        blockUE.className = 'block';
-        blockUE.id = `block${id}`;
-        const nomUE = document.createElement('span');
-        nomUE.className = 'nom_UE';
-        nomUE.textContent = `UE: ${UE.nom}`;
-        nomUE.role = 'button'
-        if (nb == 1){
-            nomUE.id = "Colorations"; // Ajouter l'ID pour le css
-        }
-        const fleche = document.createElement('button');
-        fleche.className = 'toggle-button';
-        fleche.id = `toggleUE${id}`;
-        fleche.innerHTML = '&#9654;';
-
-        const eventToggle = () => {
-            if (blockUE.style.display === 'none' || blockUE.style.display === '') {
-                blockUE.style.display = 'block';  // Affiche la matière
-                fleche.classList.add('rotated');     // Ajoute la rotation de la flèche
-            } else {
-                blockUE.style.display = 'none';   // Masque la matière
-                fleche.classList.remove('rotated');  // Retire la rotation de la flèche
-            }
-        };
-
-        fleche.addEventListener('click', eventToggle);
-        nomUE.addEventListener('click',eventToggle)
-
-        UEinfo.appendChild(nomUE);
-        UEinfo.appendChild(fleche);
+        UEinfo.textContent = `UE: ${UE.nom}`;
+        
         UEDiv.appendChild(UEinfo);
-        UEDiv.appendChild(blockUE);
         Promotion.appendChild(UEDiv);
-        UE.liste_matieres.forEach((matiere) => {
-            this.setTypes(id, matiere);
+
+        UEinfo.addEventListener('click', () => {
+            
+            const UEs = document.querySelectorAll('.UE')
+            console.log(UEs)
+            if (UEinfo.style.backgroundColor == '') {   
+                UEs.forEach((UEe) => {
+                    let Uecolor = UEe.children[0].style.backgroundColor;
+
+                    if (Uecolor != ''){
+                        console.log(Uecolor)
+
+                        UEe.children[0].style.backgroundColor = '';
+
+                        console.log(Uecolor)
+
+                    }
+                })
+                UEinfo.style.backgroundColor = '#525cb8'; 
+
+
+                const matieres = document.querySelectorAll('.matiere');
+                matieres.forEach(matiere => matiere.remove());
+
+                const UEsn = document.querySelectorAll('.c-UEname');
+                UEsn.forEach(UEn => UEn.remove());
+                
+                const matieresn = document.querySelectorAll('.c-Matierename');
+                matieresn.forEach(matieren => matieren.remove());
+
+                const notes = document.querySelectorAll('.note_coef');
+                notes.forEach(note => note.remove());
+
+                const c_UEname = document.createElement('span');
+                c_UEname.className = 'c-UEname';
+                c_UEname.textContent = `UE: ${UE.nom}`;
+
+                container1.appendChild(c_UEname)
+
+
+                UE.liste_matieres.forEach((matiere, index) => {
+                    this.setMatieres(index, matiere, 0);
+                });
+
+            }
         });
     }
 
-    setTypes(UEid, matiere) {
-        const blockUEs = document.getElementById(`block${UEid}`);
-        const matiereDiv = document.createElement('div');
-        matiereDiv.className = 'matiere';
-        matiereDiv.id = `matiere${this.m}`;
-        const matiere_info = document.createElement('div');
-        matiere_info.className = 'matiere_info';
+    setMatieres(UEid, matiere) {
 
-        const nomMatiere = document.createElement('span');
-        nomMatiere.className = 'nom_matiere';
-        nomMatiere.textContent = `EC: ${matiere.nom}`;
+        const container1 = document.getElementById("container1");
 
-        const inputPoidMatiere = document.createElement('span');
+        const block_mat = document.querySelector('.blockmatiere');
+        const matierediv = document.createElement('div');
+        matierediv.className = 'matiere';
+        matierediv.id = `matiere${this.m}`;
+
+        const matiere_info = document.createElement('button');
+        matiere_info.className = 'nom_matiere-container';
+        matiere_info.textContent = `EC: ${matiere.nom}`;
+
+        
+        matierediv.appendChild(matiere_info);
+        block_mat.appendChild(matierediv);
+
+        matiere_info.addEventListener('click', () => {
+            
+            const Matieres = document.querySelectorAll('.matiere')
+            console.log(Matieres)
+            if (matiere_info.style.backgroundColor == '') {   
+                
+                matiere_info.style.backgroundColor = '#525cb8'; 
+
+                
+
+                const c_Matierename = document.createElement('span');
+                c_Matierename.className = 'c-Matierename';
+                c_Matierename.id = matiere.nom
+                c_Matierename.textContent = `EC: ${matiere.nom}`;
+
+                container1.appendChild(c_Matierename)
+
+
+                matiere.liste_types_evaluation.forEach((typeEvaluation, index) => {
+                    this.creerNoteCoef(matiere.nom, typeEvaluation, index);
+                });
+            }
+            else{
+                matiere_info.style.backgroundColor = ''; 
+
+                const matieresn = document.querySelectorAll('.c-Matierename');
+                matieresn.forEach(matieren => {
+                    if (matieren.id == matiere.nom)
+                    matieren.remove()
+                });
+
+                const notes = document.querySelectorAll('.note_coef');
+                notes.forEach(note => note.remove());
+            }
+        });
+
+
+
+        /*const inputPoidMatiere = document.createElement('span');
         inputPoidMatiere.className = 'poid';
         inputPoidMatiere.value = matiere.poid_matiere
         inputPoidMatiere.textContent = `pourcentage de l'UE: ${matiere.poid_matiere * 100}%`;
@@ -308,9 +377,7 @@ export class Calculs {
         aditional_button.textContent = "+"
         aditional_div.appendChild(aditional_button)
 
-        matiere_info.appendChild(nomMatiere);
-        matiere_info.appendChild(inputPoidMatiere);
-        matiereDiv.appendChild(matiere_info);
+
         matiereDiv.appendChild(aditional_div);
         aditional_button.addEventListener('click',() => {
             this.creerNoteCoef(matiereDiv.id,new TypeEvaluation('nouvelle note',1,1),matiereDiv.children.length-2);
@@ -320,20 +387,18 @@ export class Calculs {
         });
         blockUEs.appendChild(matiereDiv);
 
-        matiere.liste_types_evaluation.forEach((typeEvaluation, index) => {
-            this.creerNoteCoef(matiereDiv.id, typeEvaluation, index);
-        });
-
         
-        //this.creerNoteCoef(matiereDiv.id,new TypeEvaluation('new_note',1,1),9)
+        */
+        
         this.m = this.m + 1;
 
     }
 
-    creerNoteCoef(matiereId, typeEvaluation, index) {
-        const matiere = document.getElementById(matiereId);
-        const Promotion = matiere.parentElement.parentElement.parentElement;
-        const Promotionid = Promotion.id;
+    creerNoteCoef(matiereid ,typeEvaluation, index) {
+        const container1 = document.getElementById("container1");
+        const matiere = document.getElementById(matiereid);
+
+        const Promotionid = "1"
         const len = matiere.children.length;
         for (let i = 0; i < typeEvaluation.nombre_de_notes; i++) {
             const divNoteCoef = document.createElement('div');
@@ -341,7 +406,7 @@ export class Calculs {
 
             const inputNombre = document.createElement('input');
             //inputNombre.type = 'number';
-            inputNombre.id = `n${Promotionid}_${matiereId}_${index}_${i}`; // Unique ID
+            inputNombre.id = `n${Promotionid}_${index}_${i}`; // Unique ID
             inputNombre.className = 'note';
             inputNombre.placeholder = `note ${typeEvaluation.nom} ...`;
             inputNombre.min = 0;
@@ -350,7 +415,7 @@ export class Calculs {
 
             const inputCoef = document.createElement('input');
             //inputCoef.type = 'number';
-            inputCoef.id = `c${Promotionid}_${matiereId}_${index}_${i}`; // Unique ID
+            inputCoef.id = `c${Promotionid}_${index}_${i}`; // Unique ID
             inputCoef.className = 'coef';
             inputCoef.placeholder = 'coef';
             inputCoef.min = 0;
@@ -368,7 +433,7 @@ export class Calculs {
 
             }
             else if (len > 0 && !(matiere.lastElementChild.classList.contains('resultat_matiere'))){
-                matiere.insertBefore(divNoteCoef, matiere.children[len-1]);
+                matiere.insertBefore(divNoteCoef, matiere.children[len]);
                 
             }
             else{

@@ -53,27 +53,73 @@ img {
     background-color: #1e7da6; /* Bleu légèrement plus foncé */
 }
 
+.deuxblocks{
+    width: 95%;
+    display: flex;
+    gap: 15px;
 
+}
 
 .container {
+    margin-top: 40px;
+    padding: 20px;
     display: flex;
     justify-content: left; /* Centre horizontalement */
     flex-direction: column;
-    align-items: center;
-    width: 90%;
+    align-items: left;
+    width: 50%;
+    min-height: 500px;
+    background-color: #c4cbcb;
+    border-radius: 20px;
+
 }
 
-.Promotion{
-    width: 70%;
+.container1 {
+    margin-top: 40px;
+    padding: 20px;
     display: flex;
+    justify-content: left; /* Centre horizontalement */
     flex-direction: column;
-    justify-content: center; /* Centre horizontalement */
+    align-items: left;
+    width: 50%;
+    min-height: 500px;
+    background-color: #c4cbcb;
+    border-radius: 20px;
 
-    align-items: center;
 }
 
-.UE{
+.c-UEname{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+.c-Matierename{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+.Promotion, .blockmatiere{
+    padding-left: 10px;
+    padding-top: 10px;
+    align-items: start;
+    justify-content: start;
     width: 100%;
+    display: flex;           /* Utilise le modèle de mise en page Flexbox */
+    flex-wrap: wrap; 
+    gap: 10px;        /* Permet aux éléments de passer à la ligne suivante */
+
+}
+
+.blockmatiere{
+    padding-top: 30px;
+    font-size: 20px;
+}
+
+.UE, .matiere{
+    width: 120px;
+    height: 50px;
     margin-top: 15px;
     display: block;
 }
@@ -89,36 +135,19 @@ img {
 
     
 }
-/* Promotion and UE Layout */
-.matiere {
-    width: 400px;
-    margin-top: 15px;
-}
 
-.nom_Promotion{
+
+/* Promotion and UE Layout */
+
+
+.nom_Promotion, .nom_Matiere{
     width: 100%;
     font-size: 30px;
-    margin-top: 50px;
     margin-bottom: 5px;
 
 }
 /* Matière Info */
-.matiere_info {
-    display: flex;
-    justify-content: space-between; /* Séparer le nom de la matière et le pourcentage */
-    align-items: center; /* Alignement vertical centré */
-    margin-bottom: 5px;
-}
 
-.nom_matiere {
-    margin-left: 10px;
-    font-style: italic;
-    text-decoration: underline;
-    background-color: #3498db; /* Bleu clair */
-    color: white;
-    padding: 2px 5px;
-    flex: 1; /* Prend tout l'espace restant */
-}
 
 .poid {
     font-size: 12px; 
@@ -229,25 +258,29 @@ input.coef {
     background-color: #a4aab9; /* Bleu légèrement plus foncé */
 }
 
-/* Alignement du titre de l'UE et de la flèche */
-.nom_UE-container {
+.nom_UE-container, .nom_matiere-container  {
+    border-color: #ffffff00 ;
+    background-color: #908ea0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15%;
     display: flex;
     align-items: center; /* Centrer verticalement la flèche et le texte */
-    justify-content: flex-start;
-    /* Aligner la flèche et le texte vers la gauche */
-    margin-bottom: 15px; /* Espacement en dessous du conteneur */
-    padding-right: 50px; /* Valeur du padding à droite */
-
-}
-
-.nom_UE {
-    font-size: 20px;   /* Taille du texte */
-    color: #1e47a6; /* Bleu clair */
+    justify-content: center;
+    font-size: 12px;   /* Taille du texte */
     font-weight: bold; /* Texte en gras */
-    margin-right: 10px; /* Espacement entre le texte et la flèche */
-    text-align: left; /* Aligner à gauche */
+    text-align: center; /* Aligner à gauche */
+    /* Aligner la flèche et le texte vers la gauche */
+    margin-right: 10px; /* Espacement en dessous du conteneur */
 
 }
+
+.nom_UE-container:hover, .nom_matiere-container:hover  {
+    background-color: #626e6e;
+
+}
+
+
 #Colorations{
     color: #6f88e1;
 }
@@ -276,12 +309,10 @@ input.coef {
     background-color: rgba(167, 167, 167, 0.445); /* Change la couleur au survol */
 }
 
-/* Flèche vers le bas lorsque la section est déroulée */
 .toggle-button.rotated {
     transform: rotate(90deg);
 }
 
-/* Masquer la matière par défaut */
 
 
 /* Rest of your styles unchanged... */

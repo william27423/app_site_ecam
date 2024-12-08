@@ -30,7 +30,7 @@ dropdown_items.forEach(dropdown_item => {
         const dropdown = document.getElementById("dropdown-button")
 
         if(dropdown_item.textContent != dropdown.textContent.replace("▼", "")){
-            app.setUE(liste[index]);
+            app.setPromotion(liste[index]);
             app.mettrefleche(dropdown_item);
             saveHtmlPromo(index, dropdown_item.textContent);
 

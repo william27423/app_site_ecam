@@ -38,43 +38,45 @@
         </div>
     </div>
     
-    
     <!-- Champs de saisie pour les nombres et les coefficients -->
-    <div class="container" id="container">
-        <div class="Promotion" id="Exemple">
-            <span class="nom_Promotion">Exemple</span>
-            <div class="UE" id="UE0">
-                <div class="nom_UE-container">
-                    <span class="nom_UE">Nom de l'UE</span>
-                    <button class="toggle-button" id="toggleUE0">&#9654;</button> <!-- Flèche -->
-                </div>
-                <div class="bloc" id="block-1">
-                    <div class="matiere" id="matiere0">
-                        <div class="matiere_info">
-                            <span class="nom_matiere">Nom de l'EC</span>
-                            <span class="poid" value="1">pourcentage de l'UE: 100%</span>
-                        </div>
-                        <div class="note_coef">
-                            <input type="number" id="nombre0" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
-                            <input type="number" id="coef0" class="coef" placeholder="coef" min="0" max="10" value="1">
-                        </div>
-                        <div class="note_coef">
-                            <input type="number" id="nombre1" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
-                            <input type="number" id="coef1" class="coef" placeholder="coef" min="0" max="10" value="1">
-                        </div>
-                        <div class="note_coef">
-                            <input type="number" id="nombre2" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
-                            <input type="number" id="coef2" class="coef" placeholder="coef" min="0" max="10" value="1">
-                        </div>
-                        <div class="aditional_div">
-                            <button class="aditional_button" id="aditional_button-1">+</button>
+    <div class="deuxblocks">
+        <div class="container" id="container">
+            <div class="Promotion" id="Exemple">
+                <span class="nom_Promotion">Exemple</span>
+                <div class="UE" id="UE0">
+                    <div class="nom_UE-container">
+                        <span class="nom_UE">Nom de l'UE</span>
+                    </div>
+                    <div class="bloc" id="block-1">
+                        <div class="matiere" id="matiere0">
+                            <div class="matiere_info">
+                                <span class="nom_matiere">Nom de l'EC</span>
+                                <span class="poid" value="1">pourcentage de l'UE: 100%</span>
+                            </div>
+                            <div class="note_coef">
+                                <input type="number" id="nombre0" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
+                                <input type="number" id="coef0" class="coef" placeholder="coef" min="0" max="10" value="1">
+                            </div>
+                            <div class="note_coef">
+                                <input type="number" id="nombre1" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
+                                <input type="number" id="coef1" class="coef" placeholder="coef" min="0" max="10" value="1">
+                            </div>
+                            <div class="note_coef">
+                                <input type="number" id="nombre2" class="note" placeholder="Entrez le nombre" min="0" max="20" step="0.5">
+                                <input type="number" id="coef2" class="coef" placeholder="coef" min="0" max="10" value="1">
+                            </div>
+                            <div class="aditional_div">
+                                <button class="aditional_button" id="aditional_button-1">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="container1" id="container1">
+        </div>
     </div>
-    
+
     <!-- Affichage du résultat -->
     <p id="resultat"></p> 
     <!-- Bouton pour calculer la moyenne -->

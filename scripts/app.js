@@ -98,7 +98,7 @@ function loadHtmlPromo() {
 
   if (promoHtml.length > 0){
     console.log(index)
-    app.setUE(liste[index]);
+    app.setPromotion(liste[index]);
     app.mettrefleche(dropdown_item);
 
 
