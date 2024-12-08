@@ -68,30 +68,33 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centre horizontalement */
-
     align-items: center;
 }
 
 .UE{
     width: 100%;
     margin-top: 15px;
-    display: block;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;    /* Centre verticalement */
+    flex-direction: column; /* Dispose les éléments en colonne */
 }
 
 .block {
-    width: 100%;
     display: none;
-
 }
 
 .block.show {
-    display: inline-block;
-
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;    /* Centre verticalement */
+    flex-direction: column; /* Dispose les éléments en colonne */
     
 }
 /* Promotion and UE Layout */
 .matiere {
-    width: 400px;
+    width: 500px;
     margin-top: 15px;
 }
 
@@ -231,6 +234,7 @@ input.coef {
 
 /* Alignement du titre de l'UE et de la flèche */
 .nom_UE-container {
+    width: 100%;
     display: flex;
     align-items: center; /* Centrer verticalement la flèche et le texte */
     justify-content: flex-start;
