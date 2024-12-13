@@ -12,6 +12,7 @@ body {
 }
 
 h1 {
+    font-style: italic;
     color: #333;
     margin-bottom: 2%; /* Changement de margin-bottom en pourcentage */
     font-size: 4vh; 
@@ -36,6 +37,9 @@ img {
 }
 
 .accueil {
+
+    border: none;
+
         /* La place à droite de la page */
     width: 10%;          /* Largeur de l'image en pourcentage (modifiable) */
     height: auto;        /* Garde les proportions de l'image */
@@ -44,13 +48,12 @@ img {
     padding: 10px ;      /* Réduit les marges intérieures */
     text-align: center;
     color: white;
-    border-color: #0c0c0c;
-    border-radius: 5%;  
-    background-color: #8ea0a0; /* Bleu clair */
+    border-radius: 10%;  
+    background-color: #015A9B; /* Bleu clair */
 }
 
 .accueil:hover{
-    background-color: #1e7da6; /* Bleu légèrement plus foncé */
+    background-color: #F9BE01; /* Bleu légèrement plus foncé */
 }
 
 
@@ -117,7 +120,7 @@ img {
     margin-left: 10px;
     font-style: italic;
     text-decoration: underline;
-    background-color: #3498db; /* Bleu clair */
+    background-color: #FBCE01; /* Bleu clair */
     color: white;
     padding: 2px 5px;
     flex: 1; /* Prend tout l'espace restant */
@@ -178,7 +181,7 @@ input.coef {
 }
 
 .dropdown-button {
-    background-color: #43517d; /* Bleu clair */
+    background-color: #013069; /* Bleu clair */
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -216,7 +219,7 @@ input.coef {
 
 
 .boutonCalcul:hover, .dropdown-button:hover, .clear:hover {
-    background-color: #1e47a6; /* Bleu légèrement plus foncé */
+    background-color: #FBCE01; /* Bleu légèrement plus foncé */
 }
 
 .dropdown-item{
@@ -246,7 +249,7 @@ input.coef {
 
 .nom_UE {
     font-size: 20px;   /* Taille du texte */
-    color: #1e47a6; /* Bleu clair */
+    color: #014886; /* Bleu clair */
     font-weight: bold; /* Texte en gras */
     margin-right: 10px; /* Espacement entre le texte et la flèche */
     text-align: left; /* Aligner à gauche */
@@ -310,7 +313,7 @@ input.coef {
 
 
 .boutonCalcul, .clear {
-    background-color: #3498db; /* Bleu clair */
+    background-color: #013069; /* Bleu clair */
     color: white;
     padding: 10px;
     border: none;
@@ -327,7 +330,7 @@ input.coef {
 /* Styles for the Results */
 .resultat_matiere {
     font-size: 14px;
-    color: #555; 
+    color: #FBCE01; 
     font-weight: bolder;
     margin-top: 10px;
     display: block;
@@ -335,7 +338,7 @@ input.coef {
 
 .resultat_UE {
     font-size: 15px; 
-    color: #1E90FF; 
+    color: #FBCE01; 
     font-weight: bold; 
     background-color: #f0f8ff; 
     padding: 10px;

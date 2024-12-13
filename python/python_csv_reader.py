@@ -253,6 +253,6 @@ def python_too_js(promotion):
 
         
 #promotion = csv1('C:/Users/William Ghibaudo/Desktop/projet william/web_project/app_site_ecam/z-classe csv/NOTES_EU_S6.csv')
-promotion = csv3('C:/Users/William Ghibaudo/Desktop/projet william/web_project/app_site_ecam/z-classe csv/ENG4 COLORATION.csv')
+promotion = csv3('C:/Users/william/Desktop/app_site_ecam/ENG4.csv')
 python_too_js(promotion)
         

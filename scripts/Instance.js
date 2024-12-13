@@ -280,7 +280,7 @@ export const ENG3_1S = new Promotion('Engineering 3 - Premier Semestre', [
             new TypeEvaluation('CRP', 5.0, 1),
         ]),
     ], 3),
-    new UE('Society, Management & Entrepreneurship 5 Erin MONAGHAN', [
+    new UE('Society, Management & Entrepreneurship 5', [
         new Matiere('Professional Engineering Project', 0.15, [
             new TypeEvaluation('IE', 1.0, 1),
         ]),
@@ -298,7 +298,7 @@ export const ENG3_1S = new Promotion('Engineering 3 - Premier Semestre', [
 ]);
 
 export const ENG3_2S = new Promotion('ENG3_2S', [
-    new UE('Society, Management & Entrepreneurship 5 Erin MONAGHAN', [
+    new UE('Society, Management & Entrepreneurship 5', [
         new Matiere('Principles of Marketing', 0.25, [
             new TypeEvaluation('DS', 1.0, 1),
             new TypeEvaluation('CRP', 1.0, 1),
@@ -649,7 +649,28 @@ export const ENG4_1S = new Promotion('ENG4_1S tronc commun', [
         ]),
     ], ),
 ],[
-    new UE('Robotics and  Automation E ngi neering S7', [
+    new UE('Sustainable Energy and Environmental Engineering', [
+        new Matiere('Computational Fluid Dynamics', 0.2, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('CRTP', 1.5, 1),
+        ]),
+        new Matiere('Gas Turbines', 0.1, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Compressible Flows and Propulsion Systems', 0.35, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Renewable Enerciy Systems', 0.2, [
+            new TypeEvaluation('DS', 1.5, 1),
+            new TypeEvaluation('ORAL', 1.0, 1),
+        ]),
+        new Matiere('Advanced Electrical Machines and Application', 0.15, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('CRTP', 1.0, 1),
+        ]),
+    ], 2),
+    new UE('Robotics and Automation Engineering S7', [
         new Matiere('Control Theory 2a (Digital Control Systems)', 0.2, [
             new TypeEvaluation('DS', 1.0, 1),
             new TypeEvaluation('DS', 2.5, 1),
@@ -670,7 +691,7 @@ export const ENG4_1S = new Promotion('ENG4_1S tronc commun', [
         ]),
     ], 12),
     new UE('1ndustri al Engineering &.', [
-        new Matiere('Manuf acturi ng  Digital Transformation', 0.3, [
+        new Matiere('Manufacturing Digital Transformation', 0.3, [
             new TypeEvaluation('IE', 1.0, 1),
             new TypeEvaluation('CAP', 2.0, 1),
             new TypeEvaluation('ORAL', 2.0, 1),
@@ -678,7 +699,7 @@ export const ENG4_1S = new Promotion('ENG4_1S tronc commun', [
         new Matiere('The Blue Connecti on', 0.3, [
             new TypeEvaluation('IE', 1.0, 1),
         ]),
-        new Matiere('Global Supply Chain and  Information System', 0.4, [
+        new Matiere('Global Supply Chain and Information System', 0.4, [
             new TypeEvaluation('IE', 1.0, 1),
             new TypeEvaluation('CAP', 1.0, 1),
             new TypeEvaluation('Ds', 3.0, 1),
@@ -747,7 +768,7 @@ export const AM4 = new Promotion('AM4', [
             new TypeEvaluation('CRTP', 1.0, 1),
         ]),
     ], 4),
-    new UE('Société, Management & Entrepreunariat 3 Erin MONAGHAN', [
+    new UE('Société, Management & Entrepreunariat 3', [
         new Matiere('Anglais 3', 0.6, [
             new TypeEvaluation('IE', 1.0, 1),
         ]),
@@ -773,7 +794,7 @@ export const AM4 = new Promotion('AM4', [
     ], 3),
     
 ],[
-    new UE('Coloration Usine du Futur 2 Olivier COUROUGE', [     
+    new UE('Coloration Usine du Futur 2', [     
         new Matiere('Projet d\' Organisation Industrielle 3', 0.8, [
             new TypeEvaluation('DS', 1.0, 1),
             new TypeEvaluation('CRP', 1.0, 1),
@@ -785,7 +806,7 @@ export const AM4 = new Promotion('AM4', [
             new TypeEvaluation('CRP', 1.0, 1),
         ]),
     ], 6),
-    new UE('Coloration Systèmes Numériques 2  (Advanced Software and Hardware)', [
+    new UE('Coloration Systèmes Numériques 2', [
         new Matiere('Machine Learning', 0.25, [
             new TypeEvaluation('CRP', 1.0, 1),
         ]),
@@ -828,7 +849,7 @@ export const AM4 = new Promotion('AM4', [
             new TypeEvaluation('DS', 1.0, 1),
         ]),
     ], 6),
-    new UE('Coloration "Piloter un projet ENR" Séverine DELAVERNHE', [
+    new UE('Coloration "Piloter un projet ENR"', [
         new Matiere('Analyse d\'un modèle économique d\'un projet ENR', 0.3, [
             new TypeEvaluation('DS', 1.0, 1),
         ]),
@@ -838,4 +859,80 @@ export const AM4 = new Promotion('AM4', [
     ], 6),
 ]);
 
-export let liste = [AM3_1S,AM3_2S,AM4,ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S]
+export const AM5 = new Promotion('AM5', [
+    new UE('APPROFONDISSEMENTS TECHNIQUES & SCIENTIFIQUES 1', [
+        new Matiere('APPROFONDISSEMENTS TECHNIQUES & SCIENTIFIQUES 1 module au choix', 1.0, [
+            new TypeEvaluation('DS pour Blue Connection IE pour CSCA', 1.0, 1),
+        ]),
+    ], 2),
+    new UE('APPROFONDISSEMENTS TECHNIQUES & SCIENTIFIQUES 2', [
+        new Matiere('APPROFONDISSEMENTS TECHNIQUES & SCIENTIFIQUES 2', 0.6, [
+            new TypeEvaluation('CRP NUM', 1.0, 1),
+            new TypeEvaluation('CRP MAS', 1.0, 1),
+            new TypeEvaluation('CRP ENE', 1.0, 1),
+            new TypeEvaluation('CRP C2MI', 1.0, 1),
+            new TypeEvaluation('DS NUM', 1.0, 1),
+            new TypeEvaluation('DS MAS', 1.0, 1),
+            new TypeEvaluation('DS ENE', 1.0, 1),
+            new TypeEvaluation('DS C2MI', 1.0, 1),
+        ]),
+    ], 6),
+    new UE('ANGLAIS 4', [
+        new Matiere('Anglais 5', 1.0, [
+            new TypeEvaluation('DS', 1.0, 1),
+            new TypeEvaluation('Oral', 1.0, 1),
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+    ], 3),
+    new UE('Société, Management & Entrepreunariat 4 Erin MONAGHAN', [
+        new Matiere('Business similation', 0.25, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+        new Matiere('Finances', 0.25, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Sales & Marketing', 0.25, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+        new Matiere('Ethique de l\'Ingénieur', 0.25, [
+            new TypeEvaluation('DS', 1.0, 1),
+        ]),
+    ], 7),
+    new UE('MODULE PROFESSIONNEL', [
+        new Matiere('Management ou Amélioration continue 1 module au choix', 1.0, [
+            new TypeEvaluation('IE', 1.0, 1),
+        ]),
+    ], 2),
+
+],[
+    new UE('PARCOURS CONCEPTION MECANIQUE', [
+        new Matiere('Parcours PCM', 1.0, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 10),
+    new UE('PROJET DE RECHERCHE ET DEVELOPPEMENT', [
+        new Matiere('Projet de Recherche et Développement', 1.0, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 10),
+    new UE('PARCOURS STRATEGIE ET MANAGEMENT DE L\'INNOVATION', [
+        new Matiere('Parcours SMI', 1.0, [
+            new TypeEvaluation('Projet', 1.0, 1),
+        ]),
+    ], 10),
+    new UE('PARCOURS CONTRAT DE PROFESSIONALISATION', [
+        new Matiere('Parcours Contrat de professionalisation', 1.0, [
+            new TypeEvaluation('CREntreprise', 2.0, 1),
+            new TypeEvaluation('CRP', 1.0, 1),
+            new TypeEvaluation('ORAL', 1.0, 1),
+        ]),
+    ], 10),
+    new UE('PARCOURS MANAGEMENT DES SYSTEMES D\'EXCELLENCE INDUSTRIELLE', [
+        new Matiere('Parcours MSEI', 1.0, [
+            new TypeEvaluation('CRP', 1.0, 1),
+        ]),
+    ], 10),
+]);
+
+
+export let liste = [AM3_1S,AM3_2S,AM4, AM5, ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S]
