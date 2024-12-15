@@ -25,7 +25,7 @@
         "type": "image/png"
       },
       {
-        "src": "/icons/icon-144x144.png",
+        "src": "/icons/icon-144x144.png.144x144",
         "sizes": "144x144",
         "type": "image/png"
       },
