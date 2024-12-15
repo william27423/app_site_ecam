@@ -120,7 +120,9 @@ img {
     margin-left: 10px;
     font-style: italic;
     text-decoration: underline;
-    background-color: #FBCE01; /* Bleu clair */
+    text-decoration-color: white; 
+
+    background-color: #015A9B; /* Bleu clair */
     color: white;
     padding: 2px 5px;
     flex: 1; /* Prend tout l'espace restant */
@@ -248,6 +250,9 @@ input.coef {
 }
 
 .nom_UE {
+    text-decoration: underline;               /* Applique le soulignement */
+    text-decoration-color: #FBCE01; 
+    text-underline-offset: 4px;                /* Décale la ligne de soulignement vers le bas */  
     font-size: 20px;   /* Taille du texte */
     color: #014886; /* Bleu clair */
     font-weight: bold; /* Texte en gras */
@@ -330,7 +335,8 @@ input.coef {
 /* Styles for the Results */
 .resultat_matiere {
     font-size: 14px;
-    color: #FBCE01; 
+    
+    color: #013069; 
     font-weight: bolder;
     margin-top: 10px;
     display: block;
@@ -338,7 +344,7 @@ input.coef {
 
 .resultat_UE {
     font-size: 15px; 
-    color: #FBCE01; 
+    color: #013069; 
     font-weight: bold; 
     background-color: #f0f8ff; 
     padding: 10px;
