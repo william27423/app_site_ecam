@@ -690,13 +690,13 @@ export const ENG4_1S = new Promotion('ENG4_1S tronc commun', [
             new TypeEvaluation('CRP', 1.0, 1),
         ]),
     ], 12),
-    new UE('1ndustri al Engineering &.', [
+    new UE('Industrial Engineering & Supply Chains S7', [
         new Matiere('Manufacturing Digital Transformation', 0.3, [
             new TypeEvaluation('IE', 1.0, 1),
             new TypeEvaluation('CAP', 2.0, 1),
             new TypeEvaluation('ORAL', 2.0, 1),
         ]),
-        new Matiere('The Blue Connecti on', 0.3, [
+        new Matiere('The Blue Connection', 0.3, [
             new TypeEvaluation('IE', 1.0, 1),
         ]),
         new Matiere('Global Supply Chain and Information System', 0.4, [
@@ -706,11 +706,11 @@ export const ENG4_1S = new Promotion('ENG4_1S tronc commun', [
         ]),
     ], 12),
     new UE('Mechanical Engineering S7                              ', [
-        new Matiere('Computati onal FIui d Oynamies', 0.2, [
+        new Matiere('Computational FIuid Dynamics', 0.2, [
             new TypeEvaluation('os', 1.0, 1),
             new TypeEvaluation('CRTP', 1.5, 1),
         ]),
-        new Matiere('Compressible Flows and Propulsion Syst', 0.35, [
+        new Matiere('Compressible Flows and Propulsion System', 0.35, [
             new TypeEvaluation('os', 1.0, 1),
             new TypeEvaluation('os', 1.0, 1),
         ]),
@@ -934,5 +934,77 @@ export const AM5 = new Promotion('AM5', [
     ], 10),
 ]);
 
+export const Oullins2 = new Promotion(
+    'Oullins 2', 
+    [
+        new UE(
+            'Scientifique', 
+            [
+                new Matiere(
+                    'Mathématiques', 3.0,
+                    [
+                        new TypeEvaluation('Partiel',10.0, 1), 
+                        new TypeEvaluation('DS',6.0, 1), 
+                        new TypeEvaluation('Autres',4.0, 1)
+                    ]
+                ),
+                new Matiere(
+                    'Physique Chimie', 3.0,
+                    [
+                        new TypeEvaluation('Partiel',10.0, 1), 
+                        new TypeEvaluation('DS',6.0, 1), 
+                        new TypeEvaluation('Autres évaluation',2.0, 1), 
+                        new TypeEvaluation('TP',2.0, 1)
+                    ]
+                ),
+                new Matiere(
+                    'Sciences Ingénieur', 3.0, 
+                    [
+                        new TypeEvaluation('Partiel',10.0, 1), 
+                        new TypeEvaluation('DS',6.0, 1), 
+                        new TypeEvaluation('Autres',2.0, 1), 
+                        new TypeEvaluation('TP',2.0, 1)
+                    ]
+                ),
+                new Matiere(
+                    'Gestion de Projet', 2.0, 
+                    [
+                        new TypeEvaluation('Gestion de Projet', 1, 1.0)
+                    ]
+                ),
+                new Matiere(
+                    'Informatique', 1.0,
+                    [
+                        new TypeEvaluation('Partiel',10.0, 1), 
+                        new TypeEvaluation('DS',6.0, 1), 
+                        new TypeEvaluation('Autres',4.0, 1)
+                    ]
+                )
+            ]
+        ),
+        new UE(
+            'Culture G + Anglais', 
+            [
+                new Matiere(
+                    'Anglais', 2.0, 
+                    [
+                        new TypeEvaluation('Partiel',10.0, 1), 
+                        new TypeEvaluation('DS',6.0, 1), 
+                        new TypeEvaluation('Autres',4.0, 1)
+                    ]
+                ),
+                new Matiere(
+                    'Culture Générale', 2.0, 
+                    [
+                        new TypeEvaluation('Partiel',10.0, 1), 
+                        new TypeEvaluation('DS',6.0, 1), 
+                        new TypeEvaluation('Autres',4.0, 1)
+                    ]
+                )
+            ]
+        )
+    ]
+);
 
-export let liste = [AM3_1S,AM3_2S,AM4, AM5, ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S]
+
+export let liste = [AM3_1S,AM3_2S,AM4, AM5, ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S,Oullins2]

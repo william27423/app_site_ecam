@@ -43,18 +43,43 @@ def creer_promotion():
 
     for i in range(nombre_ue):
         nom_ue = input(f"Entrez le nom de l'UE {i + 1} : ")
-        nombre_matieres = int(input(f"Combien de matières pour l'UE '{nom_ue}' ? "))
+        try:
+            nombre_matieres = int(input(f"Combien de matières pour l'UE '{nom_ue}' ? "))
+        except:
+            print(" il y a eu une erreur")
+            nombre_matieres = int(input(f"Combien de matières pour l'UE '{nom_ue}' ? "))
         matieres = []
 
         for j in range(nombre_matieres):
-            nom_matiere = input(f"Entrez le nom de la matière {j + 1} pour l'UE '{nom_ue}' : ")
-            nombre_types = int(input(f"Combien de types de contrôles pour la matière '{nom_matiere}' ? "))
+            try:
+                nom_matiere = input(f"Entrez le nom de la matière {j + 1} pour l'UE '{nom_ue}' : ")
+            except:
+                print(" il y a eu une erreur")
+                nom_matiere = input(f"Entrez le nom de la matière {j + 1} pour l'UE '{nom_ue}' : ")
+            try:
+                nombre_types = int(input(f"Combien de types de contrôles pour la matière '{nom_matiere}' ? "))
+            except:
+                print(" il y a eu une erreur")
+                nombre_types = int(input(f"Combien de types de contrôles pour la matière '{nom_matiere}' ? "))
             coefs = []
 
             for k in range(nombre_types):
-                type_control = input(f"Entrez le type de contrôle {k + 1} pour la matière '{nom_matiere}' : ")
-                nombre_control = int(input(f"Combien de contrôles pour le type '{type_control}' ? "))
-                coef = float(input(f"Entrez le coefficient pour le type '{type_control}' : "))
+                try:
+                    type_control = input(f"Entrez le type de contrôle {k + 1} pour la matière '{nom_matiere}' : ")
+                except:
+                    print(" il y a eu une erreur")
+                    type_control = input(f"Entrez le type de contrôle {k + 1} pour la matière '{nom_matiere}' : ")
+                try:
+                    nombre_control = int(input(f"Combien de contrôles pour le type '{type_control}' ? "))
+                except:
+                    print(" il y a eu une erreur")
+                    nombre_control = int(input(f"Combien de contrôles pour le type '{type_control}' ? "))
+                try:
+                    coef = float(input(f"Entrez le coefficient pour le type '{type_control}' : "))
+                except:
+                    print(" il y a eu une erreur")
+                    coef = float(input(f"Entrez le coefficient pour le type '{type_control}' : "))
+
                 coefs.append(Coef(type_control, nombre_control, coef))
 
             matieres.append(Matiere(nom_matiere, coefs))

@@ -1,6 +1,6 @@
 import { saveData, saveHtmlPromo } from './app.js';
 import { Calculs } from './Calculs.js';
-import { ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S,AM3_1S,AM3_2S,AM4,ENG4_1S, AM5} from './Instance.js';
+import { ENG2_1S,ENG2_2S,ENG3_1S,ENG3_2S,AM3_1S,AM3_2S,AM4,ENG4_1S, AM5, Oullins2} from './Instance.js';
 
 const app = new Calculs();
     // Attacher l'événement de calcul de la moyenne
@@ -21,7 +21,7 @@ boutonAcceuil.addEventListener('click',() =>{
 });
 
 
-let liste = [AM3_1S,AM3_2S,AM4, AM5, ENG2_1S, ENG2_2S,ENG3_1S,ENG3_2S, ENG4_1S]
+let liste = [AM3_1S,AM3_2S,AM4, AM5, ENG2_1S, ENG2_2S,ENG3_1S,ENG3_2S, ENG4_1S, Oullins2]
 const dropdown_items = document.querySelectorAll('.dropdown-item');
 
 dropdown_items.forEach(dropdown_item => {
