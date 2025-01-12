@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'v15';
+const CACHE_NAME = 'v16';
 
 const urlsToCache = [
     '/',
