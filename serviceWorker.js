@@ -1,4 +1,6 @@
+
 const CACHE_NAME = 'v15';
+
 const urlsToCache = [
     '/',
     '/index.html',
